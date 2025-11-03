@@ -9,12 +9,15 @@ import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/Addons.js';
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js';
 import { log } from 'three/tsl';
 
+var gui;
+
 function main() {
   initGUI();
+  initThreeJS();
 }
 
 function initGUI() {
-  const gui = new GUI();
+  gui = new GUI();
   function addObjectControls(gui, object, name) {
     const folder = gui.addFolder(`${name} Controls`);
 
@@ -84,6 +87,10 @@ function initGUI() {
   addObjectControls(gui, handlePlastic, 'handel-plastic');
   addObjectControls(gui, body, 'body');
 
+}
+
+function initScene() {
+  
 }
 // Scene setup
 const scene = new THREE.Scene();
