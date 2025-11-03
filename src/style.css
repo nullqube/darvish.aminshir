@@ -1,0 +1,85 @@
+
+body {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.brand-title {
+  position: absolute;
+  font-size: 20rem;
+  color: #0727a1;
+  top: -20%;
+  left: 3%;
+  opacity: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+.custom-top {
+  top: 16%;
+  left: 48%;
+  z-index: 1;
+}
+
+
+.first-section {
+  width: 100%;
+  height: 300vh;
+  background-color: #dddddd;
+}
+
+#threejs-container {
+position: sticky;
+top: 0;
+inset: 0;
+pointer-events: none;
+}
+
+.second-section {
+  width: 100%;
+  height: 100vh;
+  background-color: #8d1e1e;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: red;
+}
+
+canvas {
+  margin-left: -6%;
+  margin-top: -2%;
+}
+
+#scene {
+  width: 0px;
+}
+
+.product-info-1{
+  width: 35%;
+  text-align: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 62%;
+  left: 3%;
+}
+
+.product-info-2{
+  width: 35%;
+  text-align: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 62%;
+  left: 3%;
+}
+
+.product-info-3{
+  width: 35%;
+  text-align: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 62%;
+  left: 3%;
+}
