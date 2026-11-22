@@ -1,71 +1,605 @@
-<!-- <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>threejs-gasvalve</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/style.css">
-    <title>Gas Valve 3D Viewer</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/src/style.css">
+  <link rel="stylesheet" href="/src/filter.css">
+  <link rel="stylesheet" href="/src/preloader.css">
+  <link rel="stylesheet" href="/src/header.css">
+  <title>Amin Shir</title>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100..900&family=Quicksand:wght@300&display=swap"
+    rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
-      /* canvas { display: block; width: 100%; height: 100%; } */
-      /* .title {
-        font-size: 4rem;
-        color: blue;
-      } */
-      
-    </style>
-  </head>
-  <body>
-    <div class="first-section">
-    <p class="brand-title">AMIN</p>
-    <p class="brand-title custom-top">SHIR</p>
-   <div id="threejs-container">
-    <canvas id="scene"></canvas>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One:ital@0;1&family=Bowlby+One+SC&family=Changa+One:ital@0;1&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans+Devanagari:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Potta+One&family=Quicksand:wght@300&family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&family=Russo+One&display=swap" rel="stylesheet"> -->
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <!-- <div class="frame-wrapper">
+    <div></div>
+    <div class="frame">
+
+    </div>
+    <div></div>
+  </div> -->
+<!-- ==== preloader ==== -->
+<!-- <div class="preloader">
+  <div class="preloader-header">
+    <h1>AminShir</h1>
+    <div class="preloader-counter">
+      <p>000</p>
+    </div>
   </div>
+</div> -->
+
+ <div id="loader" class="loader">
+    <h1 class="loader-brand-name">AminShir</h1>
+  </div>
+
+
+
+   <!-- ==== header ==== -->
+  <!-- <div class="menu-drop-zone"></div>
+  <div class="menu-drawer">
+    <div class="menu-logo">
+      <img src="/src/images/logo.png" alt="">
+    </div>
+
+    <div class="menu-items">
+      <div class="menu-item">
+        <a href="/work">تماس</a>
+      </div>
+      <div class="menu-item">
+        <a href="/work">محصولات</a>
+      </div>
+      <div class="menu-item">
+        <a href="/work">صفحه اصلی</a>
+      </div>
+    </div>
+
+    <button class="menu-toggler" >
+      <span></span>
+      <span></span>
+    </button>
+  </div> -->
+  <div class="hamburger-menu">
+    <input id="menu__toggle" type="checkbox" />
+    <label class="menu__btn" for="menu__toggle">
+      <span></span>
+    </label>
+
+    <ul class="menu__box">
+      <li><a class="menu__item" href="/index.html" data-home-link >صفحه اصلی</a></li>
+			<li><a class="menu__item" href="/contactus.html">تماس با ما</a></li>
+
+			<li><a class="menu__item" href="/shop.html">محصولات</a></li>
+      
+			<li><a class="menu__item" href="https://online.fliphtml5.com/aminshir/Aminshir-1">کاتالوگ</a></li>
+
+
+
+    </ul>
+  </div>
+
     
-  <div class="first-scene"></div>
-  <div class="second-scene"></div>
-  <div class="third-scene"></div>
+    <!-- <svg width="0" height="0">
+  <filter id="lg">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="200" result="blur"></feGaussianBlur>
+    
+    <feTurbulence type="fractalNoise" baseFrequency="1" result="noise"></feTurbulence>
+    <feDisplacementMap in="blur" in2="noise" scale="10"></feDisplacementMap>
+  </filter>
+</svg>
 
-  <!-- <p class="product-info-1"> شیر توپی برنجی ما یک راه‌حل باکیفیت برای کنترل جریان است که با دوام، قابلیت اطمینان و دقت بالا طراحی شده است. بدنه این شیر از برنج مرغوب ساخته شده و دارای مقاومت عالی در برابر خوردگی و استحکام مکانیکی فوق‌العاده‌ای است، که آن را به گزینه‌ای ایده‌آل برای کاربردهای خانگی و صنعتی تبدیل می‌کند.
 
-این شیر با عملکرد روان و آب‌بندی دقیق خود، قطع و وصل مؤثر جریان و طول عمر بالا را حتی در شرایط کاری سخت تضمین می‌کند. ساختار برنجی آن رسانایی حرارتی عالی و سازگاری بالا با طیف گسترده‌ای از سیالات از جمله آب، هوا، روغن و گازهای غیرخورنده را فراهم می‌سازد.</p>
+   <div class="menu-wrapper">
+  <div class="menu">
+    <div class="amin-shir-name">امین شیر</div>
+    <div class="nav">
+      
+      <span><a class="menu__item" href="/index.html" data-home-link >صفحه اصلی</a></span>
+      
+			<span><a class="menu__item" href="/shop.html">محصولات</a></span>
+
+            
+			<span><a class="menu__item" href="https://online.fliphtml5.com/aminshir/Aminshir-1">کاتالوگ</a></span>
+
+			<span><a class="menu__item" href="/contactus.html">تماس با ما</a></span>
+
+
+    </div>
+  </div>
+  </div> -->
+<div class="desktop-menu">
+
+<ul>
+  <div class="layer"></div>
+  <li><a href="/index.html" data-home-link >صفحه اصلی</a></li>
+  <li><a href="/shop.html">محصولات</a></li>
+  <li><a href="https://online.fliphtml5.com/aminshir/Aminshir-1">کاتالوگ</a></li>
+  <li><a  href="/contactus.html">تماس یا ما</a></li>
+</ul>
+
+<h1>AminShir</h1>
+
+</div>
+
+  <div class="main-frame">
+    <div class="frame-content">
+      <div id="threejs-container"></div>
+      <div class="test">
+        <div class="hero-bg"></div>
+        <!-- <div class="first-section-squre1 shadow-drop-tb"></div>
+        <div class="first-section-squre2"></div>
+        <div class="first-section-squre3"></div> -->
+        <!-- <h1 class="first-slogan">The anatomy</h1> -->
+        
+         <h1 class="first-slogan">دقت تا کوچک‌ ترین جزئیات</h1>
+
+        <h3 class="brand-name shadow-drop-tb">امیــن شیــر</h3>
+        <!-- <h3 class="brand-name brand-name2">SHIR</h3> -->
+        <div class="privet-company-text">
+          <!-- <p>FLOW YOU CAN CONTROLL</p> -->
+           <p>کنترلِ جریان، در دستان شماست</p>
+        </div>
+        <!-- <h1 class="second-slogan">of percision</h1> -->
+
+         <h1 class="second-slogan">درذات طراحی</h1>
+          
+        <!-- <h1 class="company-main-brand-name1">DARVISH PAYA</h1>
+        <h3 class="company-main-brand-name2">SINCE 1952</h3> -->
+        <img class="fa-logo" src="./public/images/logo-fa(2).png" alt="">
+      </div>
+      <div class="test-2"></div>
+      <div class="test-3"></div>
+      <div class="test-4">
+        <div class="test-4-h1-container">
+
+        <h1 class="test-4-h1"> شرکت
+          درویش پایا (امین شیر)تجارب ذیقیمتی در تولید شیرهای توپی جهت مصارف خانگی و تجاری دارد. طراحی اقتصادی ، انتخاب مواد و قطعات
+          مناسب منجر به دوام و استحکام شیرهای ساخت این شرکت با طول عمر بالا شده است. این شیرها قادر می باشند ویژگی ها و
+          آزمایشات مندرج در استاندارد ملی ایران ( استاندارد 4047 ) را با موفقیت بگذرانند
+     
+       </h1>
+       
+        <h1 class="test-4-h2">  
+ همچنین این شرکت با توجه به اصل مشتری مداری ، نقطه نظرات مشتریان را با رعایت کیفیت عالی ، تسریع در تحویل و قیمت مناسب تحویل می نماید . ایمنی و کیفیت مطمعن، از اساسی ترین اهداف راهبردی شرکت درویش پایا (امین شیر) می باشد که تابحال موفقیت های ارزشمندی را کسب کرده است
+</h1>
+        
+         </div>
+      </div>
+      <div class="page page-1 svg-visibel">
+        <div class="product-info-container">
+        <p class="pros-title  text-page-1">کیفیت ساخت بی‌نظیر و استفاده از مواد اولیه درجه یک</p>
+
+        <p class="pros-text   text-page-1"> در تولید محصولات درویش پایا (امین شیر) از آلیاژهای استاندارد و مواد اولیه باکیفیت استفاده می‌شود تا علاوه بر استحکام بالا، مقاومت مطلوبی در برابر خوردگی، فشار و فرسایش فراهم شود. این رویکرد باعث افزایش طول عمر محصول، حفظ عملکرد پایدار و اطمینان خاطر مصرف‌کنندگان در استفاده روزمره می‌شود.</p>
+
+          </div>
+        <!-- <img class="pointer-1" src="src/images/arrow.png" alt=""> -->
+      </div>
+      <div class="page page-2 svg-visibel">
+  
+      </div>
+      <div class="page page-3 svg-visibel">
+        <div class="product-info-container-2">
+        <p class="quality-titel titel-left text-page-3">طراحی مهندسی، سهولت نصب و کاربری روان</p>
+        <p class="quality-text text-left text-page-3">        ارگونومی دسته و مکانیزم ربع‌گرد، امکان قطع و وصل سریع، دقیق و بدون
+          نیاز
+          به نیروی زیاد را فراهم می‌آورد. این ویژگی، تجربه کاربری راحت‌تری را نسبت به شیرآلات با دسته‌های سفت یا
+          مکانیزم‌های
+          غیر روان ارائه می‌دهد. وزن و ابعاد استاندارد محصولات درویش پایا (امین شیر)، نصب و جابجایی آن‌ها را برای تاسیسات‌کاران در
+          پروژه‌های مختلف آسان‌تر می‌کند</p>
+
+          </div>
+        <!-- <img class="pointer-2" src="src/images/arrow.png" alt=""> -->
+      </div>
+      <div class="page anatomy"></div>
+      <div class="page anatomy-exit">
+        <!-- <img class="pointer pointer-3" src="src/images/arrow.png" alt="">
+        <img class="pointer pointer-4" src="src/images/arrow.png" alt="">
+        <img class="pointer pointer-5" src="src/images/arrow.png" alt="">
+        <img class="pointer pointer-6" src="src/images/arrow.png" alt="">
+        <img class="pointer pointer-7" src="src/images/arrow.png" alt="">
+        <img class="pointer pointer-8" src="src/images/arrow.png" alt="">
+        <img class="pointer pointer-9" src="src/images/arrow.png" alt="">
+        <p class="anatomy-text anatomy-text-1">مهره واشر دار</p>
+        <p class="anatomy-text anatomy-text-2">ساقه</p>
+        <p class="anatomy-text anatomy-text-3">دسته</p>
+        <p class="anatomy-text anatomy-text-4">اورینگ</p>
+        <p class="anatomy-text anatomy-text-5">توپی</p>
+        <p class="anatomy-text anatomy-text-6">اورینگ</p>
+        <p class="anatomy-text anatomy-text-7">بدنه</p> -->
+      </div>
+      <section class="page page-4 svg-visibel">
+      </section>
+    </div>
+  
  
-  <p class="product-info-1"> شیر توپی برنجی ما یک راه‌حل باکیفیت برای کنترل جریان است که با دوام، قابلیت اطمینان و دقت بالا طراحی شده است. بدنه این شیر از برنج مرغوب ساخته شده و دارای مقاومت عالی در برابر خوردگی و استحکام مکانیکی فوق‌العاده‌ای است، که آن را به گزینه‌ای ایده‌آل برای کاربردهای خانگی و صنعتی تبدیل می‌کند.
 
-این شیر با عملکرد روان و آب‌بندی دقیق خود، قطع و وصل مؤثر جریان و طول عمر بالا را حتی در شرایط کاری سخت تضمین می‌کند. ساختار برنجی آن رسانایی حرارتی عالی و سازگاری بالا با طیف گسترده‌ای از سیالات از جمله آب، هوا، روغن و گازهای غیرخورنده را فراهم می‌سازد.</p>
+  </div>
+  <!-- --- company product --- -->
+  <div class="company-product-wrapper">
+    <div class="company-product-titel">
+    <h2 class="our-product-text">محصولات ما</h2>
+    <div class="our-product-line"></div>
+    </div>
+    <div class="product-filter">
+     <!-- <div class="switcher custom-switcher-margin">
 
-  <p class="product-info-1"> شیر توپی برنجی ما یک راه‌حل باکیفیت برای کنترل جریان است که با دوام، قابلیت اطمینان و دقت بالا طراحی شده است. بدنه این شیر از برنج مرغوب ساخته شده و دارای مقاومت عالی در برابر خوردگی و استحکام مکانیکی فوق‌العاده‌ای است، که آن را به گزینه‌ای ایده‌آل برای کاربردهای خانگی و صنعتی تبدیل می‌کند.
+  <div class="circle"></div>
 
-این شیر با عملکرد روان و آب‌بندی دقیق خود، قطع و وصل مؤثر جریان و طول عمر بالا را حتی در شرایط کاری سخت تضمین می‌کند. ساختار برنجی آن رسانایی حرارتی عالی و سازگاری بالا با طیف گسترده‌ای از سیالات از جمله آب، هوا، روغن و گازهای غیرخورنده را فراهم می‌سازد.</p>
-    </div> -->
+  <button class="item active" data-size="1inch">1inch</button>
+<button class="item" data-size="1/2inch">1/2inch</button>
+<button class="item" data-size="2inch">2inch</button>
+<button class="item" data-size="3/4inch">3/4inch</button>
+<button class="item" data-size="3/8inch">3/8inch</button>
+<button class="item" data-size="1 1/2inch">1 1/2inch</button>
+<button class="item" data-size="1 1/4inch">1 1/4inch</button>
+
+</div>
+  <div class="switcher custom2-switcher-margin ">
+
+  <div class="circle"></div>
+
+  <button class="item active" data-type="گاز">گاز</button>
+<button class="item" data-type="اب">اب</button>
+
+
+</div> -->
+
+<div class="switcher custom-switcher-margin">
+
+  <button class="arrow left">‹</button>
+
+  <div class="tabs">
+ 
+    <div class="circle"></div>
+
+    <button class="item active size-item" data-size="3/8inch" tabindex="-1">3/8inch</button>
+    <button class="item size-item" data-size="1/2inch" tabindex="-1">1/2inch</button>
+    <button class="item size-item" data-size="3/4inch" tabindex="-1">3/4inch</button>
+    <button class="item  size-item" data-size="1inch" tabindex="-1">1inch</button>
+    <button class="item size-item" data-size="1 1/4inch" tabindex="-1">1 1/4inch</button>
+    <button class="item size-item" data-size="1 1/2inch" tabindex="-1">1 1/2inch</button>
+    <button class="item size-item" data-size="2inch" tabindex="-1">2inch</button>
+    <button class="item size-item" data-size="2 1/2inch" tabindex="-1">2 1/2inch</button>
+    <button class="item size-item" data-size="3 inch" tabindex="-1">3inch</button>
+
+    
+
+<!-- <button class="item active size-item" data-size="1inch" tabindex="-1">1inch</button>
+<button class="item size-item" data-size="1/2inch" tabindex="-1">1/2inch</button>
+<button class="item size-item" data-size="2inch" tabindex="-1">2inch</button>
+<button class="item size-item" data-size="3/4inch" tabindex="-1">3/4inch</button>
+<button class="item size-item" data-size="3/8inch" tabindex="-1">3/8inch</button>
+<button class="item size-item" data-size="1 1/2inch" tabindex="-1">1 1/2inch</button>
+<button class="item size-item" data-size="1 1/4inch" tabindex="-1">1 1/4inch</button> -->
+</div>
+
+
+  <button class="arrow right">›</button>
+
+</div>
+
+
+<div class="switcher custom2-switcher-margin">
+
+  <button class="arrow left">‹</button>
+
+  <div class="tabs">
+    <div class="circle"></div>
+
+   
+  <button class="item active" data-type="گاز" tabindex="-1">گاز</button>
+<button class="item" data-type="اب" tabindex="-1">اب</button>
+
+  </div>
+
+  <button class="arrow right">›</button>
+
+</div>
+    </div>
+
+
+    <div class="product-container" id="productContainer"></div>
+  </div>
+  <!-- --- company purpose and FAQ --- -->
+  <div>
+    <div class="company-purpose-container">
+
+      <div class="company-purpose-picture" >
+        <div class="div-1" style="width: 100%; height: 100vh;"></div>
+        <div class="div-2" style="width: 100%; height: 100vh; "></div>
+        <div class="div-3" style="width: 100%; height: 100vh; "></div>
+         <div style="width: 100%; height: 100vh; "></div>
+      </div>
+      <div class="company-purpose-text">
+        <div class="line"></div>
+        <div class="company-purpose-text-wrapper">
+          <ul class="company-purpose-ul">
+            <li class="company-purpose-li li-1">
+              <!-- <p> first text</p>
+          <p> this is first section</p> -->
+              <div class="company-purpose-number"> 01</div>
+              <div class="company-purpose-li-des" > 
+                <div class="company-purpose-li-logo-wrapper">
+                  <svg class="company-purpose-li-svg" xmlns="http://www.w3.org/2000/svg" width="60px"
+                    fill="currentColor" viewBox="0 0 40 40" alt="Icon Outlines" class="icons-outline absolute inset-0"
+                    style="translate: none; rotate: none; scale: none; transform: rotate(4679.88deg); position: absolute;">
+                    <path
+                      d="M1 32.653V39h6.347v1H0v-7.347zm39 0V40h-7.347v-1H39v-6.347zM7.347 0v1H1v6.347H0V0zM40 0v7.347h-1V1h-6.347V0z">
+                    </path>
+                  </svg>
+                  <img style="height:4vh ;" class="company-purpose-img" src="src/images/standard-logo-bg-removed.png"
+                    alt="">
+                </div>
+                <p class="company-purpose-li-titel">رعایت کامل استانداردهای ملی و بین‌المللی</p>
+                <p class="company-purpose-li-describe"> امین شیر با افتخار دارای گواهی استاندارد ملی ایران (ISIRI) است.
+                  این استاندارد به معنای تعهد محصول به الزامات کیفی و ایمنی تعیین شده توسط سازمان ملی استاندارد ایران
+                  است و برای هر محصولی که در داخل کشور تولید و عرضه می‌شود، از اهمیت بالایی برخوردار است</p>
+                <div class="divide-line"></div>
+              </div>
+
+            </li>
+            <li class="company-purpose-li li-2">
+              <div class="company-purpose-number2"> 02</div>
+              <div class="company-purpose-li-des">
+                <div class="company-purpose-li-logo-wrapper">
+                  <svg class="company-purpose-li-svg company-purpose-li-svg2" xmlns="http://www.w3.org/2000/svg"
+                    width="60px" fill="currentColor" viewBox="0 0 40 40" alt="Icon Outlines"
+                    class="icons-outline absolute inset-0"
+                    style="translate: none; rotate: none; scale: none; transform: rotate(4679.88deg); position: absolute;">
+                    <path
+                      d="M1 32.653V39h6.347v1H0v-7.347zm39 0V40h-7.347v-1H39v-6.347zM7.347 0v1H1v6.347H0V0zM40 0v7.347h-1V1h-6.347V0z">
+                    </path>
+                  </svg>
+                  <img style="height:4vh ;" class="company-purpose-img2" src="src/images/logo.png" alt="">
+                </div>
+                <p class="company-purpose-li-titel company-purpose-li-titel2">طول عمر و دوام فوق‌العاده برای عملکرد
+                  پایدار</p>
+                <p class="company-purpose-li-describe"> یکی از مهم‌ترین مزایای استفاده از شیرگازی امین شیر، طول عمر و
+                  دوام بی‌نظیر آن است. مقاومت بالای این شیرآلات در برابر خوردگی، زنگ‌زدگی و فرسایش حتی در مواجهه با
+                  شرایط آب و هوایی متنوع و سیالات گوناگون، آن را از بسیاری از رقبا متمایز می‌کند.</p>
+                <div class="divide-line"></div>
+              </div>
+            </li>
+            <li class="company-purpose-li li-3">
+              <div class="company-purpose-number3"> 03</div>
+              <div class="company-purpose-li-des">
+                <div class="company-purpose-li-logo-wrapper">
+                  <svg class="company-purpose-li-svg company-purpose-li-svg3" xmlns="http://www.w3.org/2000/svg"
+                    width="60px" fill="currentColor" viewBox="0 0 40 40" alt="Icon Outlines"
+                    class="icons-outline absolute inset-0"
+                    style="translate: none; rotate: none; scale: none; transform: rotate(4679.88deg); position: absolute;">
+                    <path
+                      d="M1 32.653V39h6.347v1H0v-7.347zm39 0V40h-7.347v-1H39v-6.347zM7.347 0v1H1v6.347H0V0zM40 0v7.347h-1V1h-6.347V0z">
+                    </path>
+                  </svg>
+                  <img style="height:4vh ;" class="company-purpose-img3" src="src/images/dollar-sign.png" alt="">
+                </div>
+                <p class="company-purpose-li-titel company-purpose-li-titel3">قیمت رقابتی و ارزش خرید</p>
+                <p class="company-purpose-li-describe"> امین شیر با بهره‌وری در فرآیندهای تولید و بومی‌سازی بخش عمده‌ای
+                  از تولید، توانسته محصولی با کیفیت هم‌رده یا حتی بالاتر از بسیاری از برندهای خارجی را با قیمتی بسیار
+                  مناسب‌تر عرضه کند. این توانایی در ارائه کیفیت بالا در کنار قیمت رقابتی، ارزش خرید بالایی را برای
+                  شیرگازی امین شیر ایجاد کرده است.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="company-FAQ">
+     <section class="faq-container">
+    <h2 class="faq-title">تیم امین‌شیر مجموعه‌ای از مهندسان و متخصصان صنعتی است که با بهره‌گیری از تجربه چند دهه‌ای و رویکردی دقیق در تولید، به ارائه شیرآلات گاز و آب با کیفیت پایدار و ایمنی بالا متعهد هستند</h2>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        شرکت امین‌شیر چه نوع شیرآلاتی تولید می‌کند؟
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+      شرکت امین‌شیر تولیدکننده انواع شیرآلات گاز و آب برای کاربردهای خانگی، تجاری و صنعتی است. محصولات ما به‌صورت استاندارد عرضه می‌شوند
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        آیا محصولات امین‌شیر دارای استاندارد و گواهی‌های لازم هستند؟
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+      بله. تمامی محصولات امین‌شیر مطابق با استانداردهای معتبر تولید می‌شوند و فرآیندهای کنترل کیفیت دقیق برای تضمین ایمنی، دوام و عملکرد پایدار در نظر گرفته شده است.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        مشتریان اصلی شرکت امین‌شیر چه کسانی هستند؟
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+       مشتریان اصلی امین‌شیر شامل فروشندگان، توزیع‌کنندگان و شرکای تجاری هستند که به دنبال محصولات استاندارد، قابل اعتماد و مقرون‌به‌صرفه در حوزه شیرآلات گاز و آب می‌باشند.
+      </div>
+    </div>
+
+
+
+  </section>
+    </div>
+  </div>
+    <!-- new section2 -->
+
+    <div class="footer" id="footer">
+      <div class="footer-top-part">    
+    <div class="contact-social-wrapper"> 
+        <div class="contact-wrapper ">
+        <div class="contact-wrapper footer-height">
+          <p class="footer-titel footer-margin-top footer-margin-right">راه ارتباطی</p>
+          <span class="footer-company-descripe footer-margin-right">شرکت امین شیر از سال 1331 در زمینه تولید شیرهای مورد
+            استفاده در
+            وسایل گازسوز مشغول به فعالیت است<br></span>
+          <div class="footer-social-btn footer-margin-right footer-social-margin-top">
+            <p class="footer-social-text">EMAIL</p>
+            <span class="footer-arrow-conatiner">
+              <svg class="footer-svg">
+                <use href="#i-arrow-link">
+                  <symbol id="i-arrow-link" viewBox="0 0 10 10">
+                    <path
+                      d="M2.57704 1.25H8.75V7.39044H7.45278V5.43327C7.45278 4.81574 7.46769 4.30777 7.49751 3.90936C7.53728 3.51096 7.55716 3.31175 7.55716 3.31175C7.55716 3.31175 7.42793 3.46614 7.16948 3.7749C6.91103 4.07371 6.56312 4.44223 6.12575 4.88048L2.24901 8.75L1.25 7.76394L5.17147 3.83466C5.60885 3.39641 5.97664 3.05279 6.27485 2.80379C6.57306 2.54482 6.72217 2.41534 6.72217 2.41534C6.72217 2.41534 6.52336 2.43028 6.12575 2.46016C5.72813 2.49004 5.22117 2.50498 4.60487 2.50498H2.57704V1.25Z">
+                    </path>
+                  </symbol>
+                </use>
+              </svg>
+            </span>
+          </div>
+        </div>
+        <!-- <div class="footer-made footer-margin-right">
+          <div>Design & Dev by FloatyWeb</div>
+          <div class="recs">
+            <span>▊</span><span>▊</span>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="social-wrapper">
+        <p class="footer-titel footer-margin-top social-margin-right">شبکه های اجتماعی</p>
+        <div class="footer-social-btn social-margin-right footer-social-margin-top">
+          <p class="footer-social-text">INSTAGRAM</p>
+          <span class="footer-arrow-conatiner">
+            <svg class="footer-svg">
+              <use href="#i-arrow-link">
+                <symbol id="i-arrow-link" viewBox="0 0 10 10">
+                  <path
+                    d="M2.57704 1.25H8.75V7.39044H7.45278V5.43327C7.45278 4.81574 7.46769 4.30777 7.49751 3.90936C7.53728 3.51096 7.55716 3.31175 7.55716 3.31175C7.55716 3.31175 7.42793 3.46614 7.16948 3.7749C6.91103 4.07371 6.56312 4.44223 6.12575 4.88048L2.24901 8.75L1.25 7.76394L5.17147 3.83466C5.60885 3.39641 5.97664 3.05279 6.27485 2.80379C6.57306 2.54482 6.72217 2.41534 6.72217 2.41534C6.72217 2.41534 6.52336 2.43028 6.12575 2.46016C5.72813 2.49004 5.22117 2.50498 4.60487 2.50498H2.57704V1.25Z">
+                  </path>
+                </symbol>
+              </use>
+            </svg>
+          </span>
+        </div>
+        <div class="footer-social-btn social-margin-right" style=" margin-top: .5rem;">
+          <p class="footer-social-text">WhatsApp</p>
+          <span class="footer-arrow-conatiner">
+            <svg class="footer-svg">
+              <use href="#i-arrow-link">
+                <symbol id="i-arrow-link" viewBox="0 0 10 10">
+                  <path
+                    d="M2.57704 1.25H8.75V7.39044H7.45278V5.43327C7.45278 4.81574 7.46769 4.30777 7.49751 3.90936C7.53728 3.51096 7.55716 3.31175 7.55716 3.31175C7.55716 3.31175 7.42793 3.46614 7.16948 3.7749C6.91103 4.07371 6.56312 4.44223 6.12575 4.88048L2.24901 8.75L1.25 7.76394L5.17147 3.83466C5.60885 3.39641 5.97664 3.05279 6.27485 2.80379C6.57306 2.54482 6.72217 2.41534 6.72217 2.41534C6.72217 2.41534 6.52336 2.43028 6.12575 2.46016C5.72813 2.49004 5.22117 2.50498 4.60487 2.50498H2.57704V1.25Z">
+                  </path>
+                </symbol>
+              </use>
+            </svg>
+          </span>
+        </div>
+        <div class="footer-social-btn social-margin-right" style=" margin-top: .5rem;">
+          <p class="footer-social-text">DARVISHPAYA</p>
+          <span class="footer-arrow-conatiner">
+            <svg class="footer-svg">
+              <use href="#i-arrow-link">
+                <symbol id="i-arrow-link" viewBox="0 0 10 10">
+                  <path
+                    d="M2.57704 1.25H8.75V7.39044H7.45278V5.43327C7.45278 4.81574 7.46769 4.30777 7.49751 3.90936C7.53728 3.51096 7.55716 3.31175 7.55716 3.31175C7.55716 3.31175 7.42793 3.46614 7.16948 3.7749C6.91103 4.07371 6.56312 4.44223 6.12575 4.88048L2.24901 8.75L1.25 7.76394L5.17147 3.83466C5.60885 3.39641 5.97664 3.05279 6.27485 2.80379C6.57306 2.54482 6.72217 2.41534 6.72217 2.41534C6.72217 2.41534 6.52336 2.43028 6.12575 2.46016C5.72813 2.49004 5.22117 2.50498 4.60487 2.50498H2.57704V1.25Z">
+                  </path>
+                </symbol>
+              </use>
+            </svg>
+          </span>
+        </div>
+      </div>
+   </div> 
+      <div class="logo-wrapper">
+        <div class="brand-tabel-container">
+          <div class="footer-main-brand-container footer-margin-top">
+            <div class="footer-plate-1">
+              <P class="footer-en-text-font">DARVISH PAYA</P>
+            </div>
+            <div class="footer-plate-2 footer-en-text-font">
+              PRIVITE HELD <br>
+              COMPANY SINCE 1952<br>
+              BASE IN THERAN (IR)
+            </div>
+            <div class="footer-plate-3">
+              <P class="footer-en-text-font"> AMIN SHIR__©2025</P>
+            </div>
+          </div>
+          <img class="footer-logo" src="src/images/amin-shir-white-logo.png" alt="">
+        </div>
+        <!-- <div class="all-reserv">
+          <P class="footer-en-text-font"> All rights reserved.</P>
+        </div> -->
+
+
+
+      </div>
+    </div>
+
+      <div class="footer-bottom-part">
+         <div class="footer-made footer-margin-right">
+          <div>Design & Dev by FloatyWeb</div>
+          <div class="recs">
+            <span>▊</span><span>▊</span>
+          </div>
+        </div>
+
+          <div class="all-reserv">
+          <P class="footer-en-text-font"> All rights reserved.</P>
+        </div>
+      </div>
+
+
+
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+<!-- <script src="https://unpkg.com/split-type"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/lil-gui@0.18"></script>
+<script src="/src/header.js"></script>
+<!-- <script src="/src/filter.js"></script> -->
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<!-- <script  type="module" src="/src/preloader.js"></script> -->
+<script type="module" src="/src/old.index.js"></script>
+<!-- <script  type="module" src="/src/preloader.js"></script> -->
 
 
 
 
 
+<!-- Put this once anywhere in the page (e.g. at the bottom of <body>) -->
 
-  </body>
-     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/lil-gui@0.18"></script>
-
-    <script type="module" src="/src/main.js"></script>
 </html>
-

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Stats Banner</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: 'Vazirmatn', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .banner-wrapper {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        .banner {
+            position: relative;
+            width: 100%;
+            min-height: 320px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #111111 25%, #0d0d0d 50%, #141414 75%, #0a0a0a 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Diagonal texture overlay */
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    135deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(255,255,255,0.015) 80px,
+                    rgba(255,255,255,0.015) 82px
+                ),
+                repeating-linear-gradient(
+                    135deg,
+                    transparent,
+                    transparent 160px,
+                    rgba(255,255,255,0.01) 160px,
+                    rgba(255,255,255,0.01) 162px
+                );
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Bottom gold line accent */
+        .banner-bottom-line {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40%;
+            height: 2px;
+            background: linear-gradient(to left, #C9A96E, transparent);
+            z-index: 2;
+        }
+
+        .banner-bottom-line::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to top, rgba(201, 169, 110, 0.08), transparent);
+        }
+
+        /* Subtle glow at bottom center */
+        .banner-glow {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 60px;
+            background: radial-gradient(ellipse at center bottom, rgba(201, 169, 110, 0.12) 0%, transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 40px 60px;
+            gap: 0;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex: 1;
+            max-width: 220px;
+            padding: 20px 10px;
+            opacity: 0;
+        }
+
+        .stat-icon {
+            width: 64px;
+            height: 56px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .stat-text {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+        }
+
+        .stat-text .year {
+            font-size: 28px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+            color: #ffffff;
+        }
+
+        /* Separator lines */
+        .separator {
+            position: relative;
+            width: 2px;
+            height: 80px;
+            flex-shrink: 0;
+            margin: 0 10px;
+            opacity: 0;
+        }
+
+        .separator-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1.5px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, #C9A96E 20%, #C9A96E 80%, transparent 100%);
+        }
+
+        .separator-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(201, 169, 110, 0.3) 20%, rgba(201, 169, 110, 0.3) 80%, transparent 100%);
+            filter: blur(2px);
+        }
+
+        .separator-dot-top {
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: #C9A96E;
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(201, 169, 110, 0.6);
+        }
+
+        .separator-dot-bottom {
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: #C9A96E;
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(201, 169, 110, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .banner-content {
+                padding: 30px 40px;
+            }
+            .stat-item {
+                max-width: 180px;
+            }
+            .stat-text {
+                font-size: 14px;
+            }
+            .stat-text .year {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner {
+                min-height: auto;
+            }
+            .banner-content {
+                flex-wrap: wrap;
+                padding: 40px 20px;
+                gap: 10px;
+            }
+            .separator {
+                display: none;
+            }
+            .stat-item {
+                flex: 0 0 45%;
+                max-width: 45%;
+                padding: 20px 15px;
+            }
+            .stat-icon {
+                width: 52px;
+                height: 46px;
+            }
+            .stat-text {
+                font-size: 13px;
+            }
+            .stat-text .year {
+                font-size: 22px;
+            }
+            .banner-bottom-line {
+                width: 60%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stat-item {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+            .stat-text {
+                font-size: 12px;
+            }
+            .stat-text .year {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="banner-wrapper">
+    <div class="banner">
+        <!-- Bottom glow -->
+        <div class="banner-glow"></div>
+
+        <!-- Bottom gold line -->
+        <div class="banner-bottom-line"></div>
+
+        <!-- Content -->
+        <div class="banner-content">
+
+            <!-- Item 1: Shield -->
+            <div class="stat-item" data-index="0">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 64 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M32 4L8 14V28C8 40 18 48 32 52C46 48 56 40 56 28V14L32 4Z" 
+                              stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                        <path d="M22 28L29 35L42 22" 
+                              stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="stat-text">
+                    تعهد به استانداردهای<br>ملی و بین‌المللی
+                </div>
+            </div>
+
+            <!-- Separator -->
+            <div class="separator" data-index="1">
+                <div class="separator-glow"></div>
+                <div class="separator-line"></div>
+                <div class="separator-dot-top"></div>
+                <div class="separator-dot-bottom"></div>
+            </div>
+
+            <!-- Item 2: Gear -->
+            <div class="stat-item" data-index="2">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 64 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M32 22C28.686 22 26 24.686 26 28C26 31.314 28.686 34 32 34C35.314 34 38 31.314 38 28C38 24.686 35.314 22 32 22Z" 
+                              stroke="#C9A96E" stroke-width="2.5" fill="none"/>
+                        <path d="M32 14V18M32 38V42M14 28H18M46 28H50M19.5 19.5L22.3 22.3M41.7 41.7L44.5 44.5M19.5 36.5L22.3 33.7M41.7 14.3L44.5 17.1" 
+                              stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <path d="M24 8L26 12M40 8L38 12M8 24L12 26M8 32L12 30M24 48L26 44M40 48L38 44M56 24L52 26M56 32L52 30" 
+                              stroke="#C9A96E" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <path d="M20 10L22 14L26 12L28 16L32 14L36 16L40 14L42 10L46 12L44 16L48 20L44 22L46 26L44 30L48 34L44 36L46 40L42 42L44 46L40 44L38 48L34 46L30 48L26 46L22 48L20 44L16 46L18 42L14 40L16 36L12 34L16 30L14 26L16 22L12 20L16 18L14 14L18 12L20 10Z" 
+                              stroke="#C9A96E" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="stat-text">
+                    تخصص در تولید<br>شیرآلات گازی
+                </div>
+            </div>
+
+            <!-- Separator -->
+            <div class="separator" data-index="3">
+                <div class="separator-glow"></div>
+                <div class="separator-line"></div>
+                <div class="separator-dot-top"></div>
+                <div class="separator-dot-bottom"></div>
+            </div>
+
+            <!-- Item 3: Star -->
+            <div class="stat-item" data-index="4">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 64 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M32 6L38 22L56 22L42 32L46 48L32 38L18 48L22 32L8 22L26 22L32 6Z" 
+                              stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="stat-text">
+                    بیش از ۷۰ سال تجربه
+                </div>
+            </div>
+
+            <!-- Separator -->
+            <div class="separator" data-index="5">
+                <div class="separator-glow"></div>
+                <div class="separator-line"></div>
+                <div class="separator-dot-top"></div>
+                <div class="separator-dot-bottom"></div>
+            </div>
+
+            <!-- Item 4: Factory -->
+            <div class="stat-item" data-index="6">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 64 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 44V24H14V16H22V24H30V12H38V24H46V20H54V44H6Z" 
+                              stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                        <path d="M14 44V34H20V44" stroke="#C9A96E" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                        <path d="M26 44V34H32V44" stroke="#C9A96E" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                        <path d="M38 44V34H44V44" stroke="#C9A96E" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                        <path d="M42 12V6" stroke="#C9A96E" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <path d="M46 12V4" stroke="#C9A96E" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="stat-text">
+                    <span class="year">۱۳۳۱</span>
+                    آغاز فعالیت
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.banner',
+            start: 'top 80%',
+            end: 'top 20%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    const items = document.querySelectorAll('.stat-item');
+    const separators = document.querySelectorAll('.separator');
+
+    gsap.set(items, { opacity: 0, y: 30 });
+    gsap.set(separators, { opacity: 0, scaleY: 0 });
+
+    const animOrder = [6, 5, 4, 3, 2, 1, 0];
+
+    animOrder.forEach((index, i) => {
+        const el = document.querySelector(`[data-index="${index}"]`);
+        if (el.classList.contains('stat-item')) {
+            tl.to(el, {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: 'power3.out'
+            }, i * 0.15);
+        } else if (el.classList.contains('separator')) {
+            tl.to(el, {
+                opacity: 1,
+                scaleY: 1,
+                duration: 0.5,
+                ease: 'power2.out',
+                transformOrigin: 'top center'
+            }, i * 0.15 - 0.05);
+        }
+    });
+
+    gsap.to('.separator-glow', {
+        opacity: 0.5,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        stagger: 0.3
+    });
+</script>
+
+</body>
+</html>

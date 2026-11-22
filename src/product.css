@@ -1,0 +1,461 @@
+.pic-1 {
+  background-image: url("/src/images/DSC00586(6).jpg");
+  width: 100%;
+  height: 23%;
+  background-position: 32% 33%;
+  background-size: 208% auto;
+  margin-top: 1%;
+  margin-left: 1%;
+}
+
+.pic-2 {
+ background-image: url("/src/images/DSC00586(6).jpg");
+  width: 50%;
+  height: 73%;
+  background-position: 41% 60%;
+  background-size: 290% auto;
+  margin-top: 1%;
+  margin-left: 2%;
+}
+
+.pic-3 {
+  background-image: url("/src/images/DSC00586(6).jpg");
+  width: 50%;
+  height: 73%;
+  background-position: 42% 49%;
+  background-size: 241% auto;
+  margin-top: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+
+@font-face {
+  font-family:"IRANSansBold" ;
+  src: url('fonts/IRANSansBold-Edit.ttf');
+}
+
+@font-face {
+  font-family:"VazirBold" ;
+  src: url('fonts/Vazir-Bold.woff');
+}
+
+@font-face {
+  font-family:"pelak" ;
+  src: url('fonts/Pelak-Bold.woff');
+} 
+
+@font-face {
+  font-family:"pelak-light" ;
+  src: url('fonts/Pelak-light.ttf');
+} 
+
+.product-image {
+    width: 100%;
+    height: auto;
+    margin-top: 1%;
+   margin-left: 1%;
+}
+
+@media (max-width: 1301px) {
+  .product-image {
+    width: 95%;
+    height: auto;
+    margin-top: 1%;
+   margin-left: 0;
+}
+}
+
+.product-container {
+    width: 100%;
+    display: flex;
+}
+
+.product-image-container {
+    width: 42%;
+}
+
+.product-text-image-container {
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-name {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 15%;
+}
+
+.product-describe {
+    width: 37rem;
+    text-align: right;
+    margin-left: 5%;
+    margin-top: 6%;
+    font-family: vazirbold;
+}
+
+.product-text-container {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-texture-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3%;
+}
+
+.iron-pic {
+    height: 15vh;
+}
+
+.brass-pic {
+    height: 15vh;
+    width: 8rem;
+}
+
+.product-image-container-2 {
+   display: flex;
+  gap: .2rem;
+  width: 100%;
+  margin-top: 1%;
+  aspect-ratio: 2 / .45;
+}
+
+.product-image-2 {
+    width: 49%;
+    margin-left: 2%;
+}
+
+.product-image-3 {
+    width: 97%;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+
+.product-image-2-fix {
+    margin-left: 0;
+    margin-right: 1%;
+}
+
+.info-tabel {
+ width: 98%;
+ margin-top: -5.6%;
+}
+
+
+.company-FAQ {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+ /* background-color: #dfdfdf; */
+ background-color: white;
+ display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+    /* faq-section */
+
+      .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 6rem;
+      color: #373737;
+       font-family:"pelak" ;
+      
+    }
+
+    @media screen and (max-width: 552px) {
+    .faq-title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 6rem;
+      color: #373737;
+      padding-left: 4%;
+    padding-right: 4%;
+     font-family:"pelak" ;
+    }
+}
+
+    .faq-item {
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      padding: 20px;
+  border-bottom: 1px dashed black;
+    }
+
+    .faq-question {
+      background-color: white;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 18px 20px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #222;
+      transition: background 0.3s ease;
+      direction: rtl;
+      font-family: "pelak";
+    }
+
+       @media screen and (max-width: 552px) {
+     .faq-question {
+      background-color: white;
+      border: none;
+      width: 100%;
+      text-align: right;
+      padding: 18px 20px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #222;
+      transition: background 0.3s ease;
+      direction: rtl;
+      font-family: VazirBold;
+    }
+}
+
+     @media screen and (max-width: 450px) {
+     .faq-question {
+      background-color: white;
+      border: none;
+      width: 100%;
+      text-align: right;
+      padding: 18px 15px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #222;
+      transition: background 0.3s ease;
+      direction: rtl;
+      font-family: VazirBold;
+    }
+}
+
+     .faq-question:hover {
+      color: #d84903;
+     }
+
+    .faq-item.active .faq-question {
+  color: #d84903;
+}
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+     background-color: white;
+      transition: all 0.4s ease;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #d84903;
+      font-family: VazirBold;
+  text-align: end;
+  font-size: 1.1rem;
+  direction: rtl;
+  text-align: right;
+    }
+
+     @media screen and (max-width: 552px) {
+       .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+     background-color: white;
+      transition: all 0.4s ease;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #d84903;
+      font-family: VazirBold;
+  text-align: end;
+  font-size: 1rem;
+    direction: rtl;
+  text-align: right;
+    }
+}
+    
+
+    .faq-item.active .faq-answer {
+      max-height: 531px;
+      padding: 15px 20px;
+    }
+
+    .faq-icon {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* ==== table ==== */
+
+/* Wrapper enables horizontal scroll on small screens */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Base table styling */
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  font-family: Arial, sans-serif;
+  margin-top: 6%;
+}
+
+.responsive-table th,
+.responsive-table td {
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Header styling */
+.responsive-table thead th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Persian columns: RTL */
+.fa {
+  direction: rtl;
+  text-align: right;
+  font-family:"pelak-light";
+}
+
+/* Mobile optimization (stacked view) */
+@media (max-width: 768px) {
+  .responsive-table {
+    min-width: unset;
+  }
+
+  .responsive-table thead {
+    display: none;
+  }
+
+  .responsive-table tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+  }
+
+  .responsive-table td {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .responsive-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .fa {
+    text-align: right;
+  }
+}
+
+
+
+         /* new version */
+
+.product-top-container {
+  width: 100%;
+  display: flex;
+}
+
+@media (max-width: 1301px){
+  .product-top-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+}
+
+.product-pic-container {
+  width: 50%;
+}
+
+@media (max-width: 1301px){
+ .product-pic-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+}
+
+.product-des-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1301px){
+.product-des-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+}
+
+.product-brand-name {
+  font-size: 4.5rem;
+  
+}
+
+
+
+.h2-faq-title  {
+  padding: 0 89px;
+
+}
+
+@media (max-width: 1301px){
+.h2-faq-title  {
+  padding: 0 ;
+
+}
+}
+
+.responsive-table thead th {
+  background-color: #d84903;
+  font-weight: bold;
+  color: white;
+}

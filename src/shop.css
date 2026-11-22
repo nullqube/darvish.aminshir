@@ -1,0 +1,237 @@
+.company-product-wrapper {
+  width: 100%;
+  /* height: 100vh; */
+  background-color: white;
+  overflow: hidden;
+}
+
+.company-product-titel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.our-product-text {
+  margin-top: 6%;
+  font-size: 2.5rem;
+  font-family: "pelak";
+}
+
+.our-product-line {
+  width: 6%;
+  height: 2.3px;
+  background-color: black;
+  margin-top: 0.5%;
+}
+
+.product-container {
+  width: 100%;
+  margin-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 9%;
+
+}
+
+.product-container:has(> :nth-child(4)) {
+  justify-content: center;
+}
+
+@media(max-width:1543px) {
+  .product-container {
+  width: 100%;
+  margin-top: 7%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 9%;
+  gap: 2%;
+  /* justify-content: center; */
+  padding-left: 3%;
+}
+}
+
+
+
+.product-card {
+  width: 360px;
+  /* background-color: beige; */
+  margin-left: 4.5%;
+  border-radius: 32px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 2%;
+}
+
+@media(max-width:1543px) {
+  .product-card {
+  width: 360px;
+  /* background-color: beige; */
+  margin-left: 0;
+  border-radius: 32px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 2%;
+}
+}
+
+
+
+.product-name-container {
+  height: 80px;
+  padding: 10px 20px;
+  display: flex;
+  /* align-items: center; */
+  width: 89%;
+  justify-content: space-between;
+}
+
+.product-thumbnail-pic {
+  border-radius: 26px;
+  margin-top: -9%;
+  height: 34vh;
+}
+
+.product-name {
+  /* font-family: "Bowlby One SC", sans-serif; */
+  font-weight: 600;
+  font-style: normal;
+  font-size: 15px;
+}
+
+.product-footer-arrow-conatiner {
+  background-color: #f73;
+  border-radius:4rem;
+  flex-shrink: 0;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 7px;
+  margin-top: -2%;
+}
+
+.product-footer-svg {
+  fill: white;
+  height: 1.7rem;
+  width: 1.7rem;
+}
+
+.product-card-2 {
+  width: 360px;
+  margin-left: 10%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  /* border: 2px solid black; */
+}
+
+.company-product-titel-2 {
+  display: flex;
+  align-items: center;
+  border-bottom: 2.5px solid black;
+  padding: 9px 0;
+}
+
+.circel {
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+  border-radius: 20px;
+}
+
+
+
+.product-name-2 {
+  /* font-family: "Bowlby One SC", sans-serif; */
+  font-weight: 600;
+  font-style: normal;
+  margin-left: 4%;
+  font-size: 18px;
+}
+
+.valve-type-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 2px;
+  border-bottom: 1.5px solid gray;
+}
+
+.valve-type-text {
+  font-size: 14.5px;
+  /* font-family: "IRANSANS"; */
+}
+
+
+.valve-size-text {
+   font-size: 13.5px;
+  /* font-family: "IRANSANS"; */
+}
+
+.product-card-3 {
+  width: 360px;
+  margin-left: 10%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  background-image: url("./images/DSC00586\(5\).jpg");
+  /* justify-content: center;
+  align-items: center; */
+  /* border: 2px solid black; */
+}
+
+.product-name-3 {
+  font-family: "Bowlby One SC", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 22px;
+  margin-top: 9%;
+  margin-left: 6%;
+}
+
+.product-sub-text {
+  margin-top: 4%;
+  margin-left: 6%;
+  font-family: "VAZIRBOLD";
+  color: gray;
+}
+
+.product-brandName {
+  font-size: 20px;
+  margin-top: 72%;
+  margin-left: 6%;
+}
+
+
+.product-filter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding-bottom: 4%;
+  flex-direction: column-reverse;
+}
+
+@media(max-width:914px) {
+  .product-filter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 4%;
+}
+}
