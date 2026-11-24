@@ -1,0 +1,314 @@
+/**
+*
+*	Name:			DANA Fonts
+*	Version:			3.0
+*	Author:			Moslem Ebrahimi (moslemebrahimi.com)
+*	Created on:		nov 12, 2021
+*	Updated on:		nov 12, 2021
+*	Website:			http://fontiran.com
+*	Copyright:		Commercial/Proprietary Software
+--------------------------------------------------------------------------------------
+فونت دانا یک نرم افزار مالکیتی محسوب می شود. جهت آگاهی از قوانین استفاده از این فونت ها لطفا به وب سایت (فونت ایران دات کام) مراجعه نمایید
+--------------------------------------------------------------------------------------
+DANA fonts are considered a proprietary software. To gain information about the laws regarding the use of these fonts, please visit www.fontiran.com 
+--------------------------------------------------------------------------------------
+This set of fonts are used in this project under the license: (.....)
+------------------------------------------------------------------------------------- fonts/-
+*	
+**/
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 10;
+	src: url('/public/Dana-Hairline.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-Hairline.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 100;
+	src: url('/public/font/Dana-Thin.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-Thin.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 200;
+	src: url('/public/font/Dana-UltraLight.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-UltraLight.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 300;
+	src: url('/public/font/Dana-Light.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-Light.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 500;
+	src: url('/public/font/Dana-Medium.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-Medium.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 600;
+	src: url('/public/font/Dana-DemiBold.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-DemiBold.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 800;
+	src: url('/public/font/Dana-ExtraBold.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-ExtraBold.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 900;
+	src: url('/public/font/Dana-Black.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-Black.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 930;
+	src: url('/public/font/Dana-ExtraBlack.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-ExtraBlack.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 960;
+	src: url('/public/font/Dana-Heavy.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-Heavy.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 990;
+	src: url('/public/font/Dana-Fat.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-Fat.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: bold;
+	src: url('/public/font/Dana-Bold.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-Bold.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: normal;
+	src: url('/public/font/Dana-Regular.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+		 url('../woff/Dana-Regular.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Header */
+.hero-header {
+  position: absolute;
+  top: 21px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  z-index: 100;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Logo Circle */
+.header-logo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(91, 121, 151, 0.18);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  text-decoration: none;
+  border: 1px solid #ffffff30;
+}
+
+/* Abstract Logo */
+.logo-mark {
+  position: relative;
+  width: 44px;
+  height: 40px;
+}
+
+.logo-dot {
+  position: absolute;
+  display: block;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.dot-1 {
+  width: 19px;
+  height: 19px;
+  left: 2px;
+  bottom: 4px;
+}
+
+.dot-2 {
+  width: 19px;
+  height: 19px;
+  right: 3px;
+  top: 2px;
+}
+
+.dot-3 {
+  width: 19px;
+  height: 19px;
+  right: 0;
+  bottom: 3px;
+}
+
+/* Navigation Pill */
+.header-nav {
+  height: 60px;
+  padding: 0 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+
+  border-radius: 100px;
+
+  background: rgba(91, 121, 151, 0.19);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  flex-direction: row-reverse;
+  width: 90%;
+  justify-content: space-between;
+  border: 1px solid #ffffff30;
+}
+
+
+.header-nav {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  height: 60px;
+  padding: 0 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+width: 90%;
+  justify-content: space-between;
+  border-radius: 100px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Blurred liquid metal background */
+.header-nav::before {
+  content: "";
+  position: absolute;
+  inset: -15px;
+  z-index: -2;
+
+  background-image: url("../public/images/background.webp");
+  background-size: cover;
+  background-position: center 35%;
+
+  filter: blur(34px);
+  transform: scale(1.8);
+}
+
+/* Dark glass overlay */
+.header-nav::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: rgba(15, 15, 15, 0.35);
+  border-radius: inherit;
+}
+
+/* Navigation Links */
+.header-nav a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+
+ font-family: dana;
+  font-weight: 800;
+  font-size: 19px;
+  font-weight: 400;
+
+  transition: opacity 0.3s ease;
+}
+
+.header-nav a:hover {
+  opacity: 0.65;
+}
+
+
+.header-nav-item {
+    display: flex;
+    gap: 48px;
+}
+/* Responsive */
+@media (max-width: 600px) {
+  .hero-header {
+    top: 25px;
+    gap: 10px;
+  }
+
+  .header-logo {
+    width: 58px;
+    height: 58px;
+  }
+
+  .logo-mark {
+    transform: scale(0.75);
+  }
+
+  .header-nav {
+    height: 58px;
+    padding: 0 20px;
+    gap: 22px;
+  }
+
+  .header-nav a {
+    font-size: 16px;
+  }
+}

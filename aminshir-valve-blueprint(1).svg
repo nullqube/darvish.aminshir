@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 650" fill="none">
+  <g stroke="#c8b58a" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" opacity=".62">
+    <!-- vertical valve body -->
+    <path d="M214 80 L214 520 Q214 531 225 534 L322 534 Q334 530 334 518 L334 91"/>
+    <path d="M225 83 Q270 70 321 83 L321 151 Q275 164 225 151 Z"/>
+    <path d="M219 151 Q270 136 327 151 L337 166 L337 221 Q329 235 316 237 L225 237 Q211 233 205 220 L205 169 Z"/>
+    <path d="M205 169 Q269 183 337 169 M205 220 Q270 231 337 220"/>
+    <path d="M222 237 L222 303 Q270 317 319 303 L319 237"/>
+    <path d="M211 303 Q270 290 330 303 L337 319 L337 347 Q329 359 317 361 L225 361 Q211 357 205 345 L205 319 Z"/>
+    <path d="M205 319 Q270 333 337 319 M205 345 Q270 358 337 345"/>
+    <path d="M224 361 L224 503 Q270 516 319 503 L319 361"/>
+    <path d="M205 503 Q270 518 337 503 L337 552 Q331 567 316 570 L225 570 Q210 566 205 552 Z"/>
+    <path d="M205 523 Q270 537 337 523 M205 552 Q270 565 337 552"/>
+    <!-- top cap details -->
+    <path d="M232 86 L232 143 M241 83 L241 147 M307 83 L307 146 M315 84 L315 144"/>
+    <path d="M225 102 Q270 111 321 102 M225 133 Q270 141 321 133"/>
+    <!-- body seams and facets -->
+    <path d="M218 177 L218 213 M226 174 L226 219 M314 174 L314 218 M324 177 L324 213"/>
+    <path d="M230 250 L230 291 M239 246 L239 297 M305 246 L305 297 M313 250 L313 291"/>
+    <path d="M219 379 L219 489 M229 375 L229 495 M312 375 L312 495 M324 379 L324 489"/>
+    <!-- central outlet / handle pivot -->
+    <path d="M214 328 Q189 339 178 366 L174 414 Q177 441 198 454 L225 461"/>
+    <path d="M334 328 Q359 340 370 367 L374 414 Q370 442 350 455 L319 461"/>
+    <ellipse cx="273" cy="400" rx="67" ry="77"/>
+    <ellipse cx="273" cy="400" rx="49" ry="57"/>
+    <circle cx="273" cy="400" r="33"/>
+    <path d="M273 323 L273 477 M206 400 L340 400"/>
+    <path d="M238 337 Q273 324 307 337 M238 463 Q273 476 307 463"/>
+    <!-- diagonal lever extending lower-left -->
+    <path d="M228 357 L99 420 Q84 429 75 446 L43 493 Q33 511 46 530 L69 550 Q83 561 101 553 L244 482"/>
+    <path d="M215 374 L103 430 Q89 437 81 453 L51 498 Q43 512 55 527 L73 541 Q84 550 98 543 L231 476"/>
+    <path d="M194 385 L214 424 M177 394 L197 435 M95 431 L119 470 M77 453 L101 489"/>
+    <!-- lever end cap -->
+    <path d="M43 493 Q22 511 34 535 L52 555 Q72 572 96 557 L111 543 L101 513 L70 483 Z"/>
+    <ellipse cx="67" cy="523" rx="34" ry="39" transform="rotate(-32 67 523)"/>
+    <ellipse cx="67" cy="523" rx="24" ry="29" transform="rotate(-32 67 523)"/>
+    <path d="M39 505 L93 544 M44 539 L89 502 M52 489 L82 557"/>
+    <!-- lever grip construction bands -->
+    <path d="M107 430 L128 471 M125 421 L146 462 M150 409 L170 450"/>
+    <path d="M91 448 L115 488 M111 438 L135 477"/>
+    <!-- lower threaded connector -->
+    <path d="M226 570 L226 604 Q270 615 313 604 L313 570"/>
+    <path d="M232 578 L232 600 M242 580 L242 604 M302 580 L302 604 M312 578 L312 600"/>
+    <!-- small valve details -->
+    <path d="M225 154 L225 166 M235 155 L235 168 M310 155 L310 168"/>
+    <path d="M225 304 L225 316 M235 303 L235 319 M310 303 L310 319"/>
+    <path d="M225 507 L225 519 M235 508 L235 522 M310 508 L310 522"/>
+  </g>
+  <!-- engineering centerlines and dimensions -->
+  <g stroke="#c8b58a" stroke-width="1" opacity=".42">
+    <path d="M273 35 V625 M155 400 H410"/>
+    <path d="M174 53 H362 M174 45 V61 M362 45 V61"/>
+    <path d="M174 53 l12 -4 v8 z M362 53 l-12 -4 v8 z" fill="#c8b58a"/>
+    <path d="M390 80 V570 M382 80 H398 M382 570 H398"/>
+    <path d="M390 80 l-4 12 h8 z M390 570 l-4 -12 h8 z" fill="#c8b58a"/>
+    <path d="M205 592 H337 M205 584 V601 M337 584 V601"/>
+    <path d="M205 592 l10 -4 v8 z M337 592 l-10 -4 v8 z" fill="#c8b58a"/>
+    <path d="M67 523 L273 400" stroke-dasharray="4 5"/>
+  </g>
+  <g fill="#c8b58a" opacity=".48">
+    <circle cx="273" cy="400" r="2.4"/>
+    <circle cx="67" cy="523" r="2"/>
+  </g>
+</svg>

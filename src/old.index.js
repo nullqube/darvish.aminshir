@@ -57,8 +57,9 @@ const companyName2 = document.querySelectorAll(".company-titel-name2");
 const companyNameWrapper2 = document.querySelectorAll(".company-titel-name2-container");
 const companySubtitel = document.querySelectorAll(".company-sub-titel");
 const test2 = document.querySelectorAll(".test-2");
-const firstSlogan = document.querySelector(".first-slogan");
-const secondSlogan = document.querySelector(".second-slogan");
+const firstSlogan = document.querySelector(".hero-slogan-first-text");
+const secondSlogan = document.querySelector(".hero-slogan-second-text");
+ const thirdSlogan = document.querySelector(".hero-slogan-third-text");
 const companyPrivetText = document.querySelector(".privet-company-text")
 let istheobjectinthescene = true;
 let model, handle, screw, ball;
@@ -236,20 +237,7 @@ function initScene() {
 
 
 
-// function initCamera(az, el, radius) {
-//   const azimuth = THREE.MathUtils.degToRad(az);
-//   const elevation = THREE.MathUtils.degToRad(el);
-//   const x = radius * Math.cos(elevation) * Math.sin(azimuth);
-//   const y = radius * Math.sin(elevation);
-//   const z = radius * Math.cos(elevation) * Math.cos(azimuth);
-//   //  camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-//   camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
-//   camera.position.set(x, y, z);
-//   // camera.position.set(0, 0, 0);
-//   camera.lookAt(0, 0, 0); // 👈 look at origin (where your model is centered)
-//   // initCameraPositionGUI(camera);
-//   createTransformGUI(camera);
-// }
+
 
 function initCamera(az, el, radius) {
   const isMobile = window.innerWidth < 768;
@@ -323,43 +311,13 @@ function initRenderers() {
     );
 }
 
-// function manageCanvas() {
-//     if (threeContainer.contains(renderer.domElement)) {
-//     threeContainer.removeChild(renderer.domElement);
-//   }
-//   if (anatomyContainer.contains(renderer.domElement)) {
-//     anatomyContainer.removeChild(renderer.domElement);
-//   }
-//   if(isInTheAnatomy) {
-//   anatomyContainer.appendChild(renderer.domElement);
-//   } else {
-//   threeContainer.appendChild(renderer.domElement);
-//   }
-// }
+
 
 
 
 
 function initLights() {
-  // const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
-  // keyLight.position.set(5, 10, 5);
-  // keyLight.castShadow = true;
-
-  // // Shadow quality
-  // keyLight.shadow.mapSize.set(2048, 2048);
-  // keyLight.shadow.camera.near = 1;
-  // keyLight.shadow.camera.far = 50;
-  // keyLight.shadow.camera.left = -10;
-  // keyLight.shadow.camera.right = 10;
-  // keyLight.shadow.camera.top = 10;
-  // keyLight.shadow.camera.bottom = -10;
-
-  // scene.add(keyLight);
-
-  // const fillLight = new THREE.DirectionalLight(0xffffff, 0.5);
-  // fillLight.position.set(-3, 2, -2);
-  // scene.add(fillLight);
-
+ 
   // Assuming you are using a DirectionalLight
 const light = new THREE.DirectionalLight(0xffffff, 1.5);
 light.position.set(5, 10, 5); // Move it up and to the side
@@ -372,11 +330,6 @@ light.shadow.mapSize.height = 2048;
 light.shadow.camera.near = 0.5;
 light.shadow.camera.far = 500;
 
-// Optional: Adjust the shadow camera frustum if shadows are clipping
-// light.shadow.camera.left = -10;
-// light.shadow.camera.right = 10;
-// light.shadow.camera.top = 10;
-// light.shadow.camera.bottom = -10;
 
 scene.add(light);
 
@@ -416,12 +369,6 @@ function initControls() {
 }
 
 
-// // Handle resizing
-// window.addEventListener('resize', () => {
-//   camera.aspect = window.innerWidth / window.innerHeight;
-//   camera.updateProjectionMatrix();
-//   renderer.setSize(window.innerWidth, window.innerHeight);
-// });
 
 function setupResize() {
   function resize() {
@@ -455,20 +402,7 @@ function initLoaders() {
 
 
 function addGround() {
-  // const ground = new THREE.Mesh(
-  //   new THREE.PlaneGeometry(1000, 1000),  // Larger if needed
-  //   new THREE.MeshStandardMaterial({
-  //     color: 0xffffff,       // Pure white for clean studio look
-  //     roughness: 0.8,
-  //     metalness: 0.0,
-  //     transparent: true,     // ← Add transparency
-  //     opacity: 1          // ← Adjust (0.4-0.7 looks good – subtle floor)
-  //   })
-  // );
-  // ground.rotation.x = -Math.PI / 2;
-  // ground.position.y = -1;  // Lower it a bit more so it's mostly a subtle shadow catcher
-  // ground.receiveShadow = true;
-  // scene.add(ground);
+
 
 
   // 1. Create a flat plane geometry
@@ -500,144 +434,7 @@ scene.add(floor);
 
 
 
-// let mirroredModel;
-// let mirror;
 
-// function createMirrorAndClone(original) {
-//   // ---- Clone & mirror model ----
-//   mirroredModel = original.clone(true);
-//   console.log("mirroredModel", mirroredModel);
-//   mirroredModel.scale.x *= 1;
-//   mirroredModel.position.x += 2; // offset so it’s visible
-
-//   mirroredModel.traverse((child) => {
-//     if (child.isMesh) {
-//       child.material = child.material.clone();
-//       child.material.side = THREE.DoubleSide;
-//     }
-//   });
-
-//   scene.add(mirroredModel);
-
-//   // ---- Reflective plane (optional) ----
-//   // const mirror = new Reflector(
-//   //   new THREE.PlaneGeometry(6, 6),
-//   //   {
-//   //     clipBias: 0.003,
-//   //     textureWidth: window.innerWidth * window.devicePixelRatio,
-//   //     textureHeight: window.innerHeight * window.devicePixelRatio,
-//   //     color: 0xdddddd
-//   //   }
-//   // );
-
-//   mirror = new Reflector(
-//     new THREE.PlaneGeometry(6, 6),
-//     {
-//       clipBias: 0.003,
-//       textureWidth: window.innerWidth * window.devicePixelRatio * 0.5,
-//       textureHeight: window.innerHeight * window.devicePixelRatio * 0.5,
-//       color: 0xbbbbbbb
-//     }
-//   );
-
-
-//   mirror.material.transparent = true;
-//   mirror.material.opacity = 0.5;
-
-
-
-
-//   mirror.position.z = 0.17;
-//   mirror.position.x = .6;
-//   mirror.position.y = -0.52999
-//   mirror.rotation.x = THREE.MathUtils.degToRad(-102.5);
-//   mirror.rotation.y = THREE.MathUtils.degToRad(-10.3);
-//   mirror.rotation.z = THREE.MathUtils.degToRad(-53.7);// IMPORTANT
-//   mirror.scale.set(.15, .35, .63)
-//   scene.add(mirror);
-// }
-
-
-
-// const raycaster = new THREE.Raycaster();
-// const pointer = new THREE.Vector2();
-// let model; // define globally so it’s accessible in the click handler
-
-// function animateMirrorScaleOnSection2() {
-//   if (!mirror) return;
-
-//   ScrollTrigger.create({
-//     trigger: ".bg-wrapper",
-//     start: "top 70%",
-
-//     onEnter: () => {
-//       gsap.to(mirror.scale, {
-//         x: 0,
-//         y: 0,
-//         z: 0,
-//         duration: 0.8,
-//         ease: "power2.out"
-//       });
-//     },
-
-//     onLeaveBack: () => {
-//       gsap.to(mirror.scale, {
-//         x: 0.15,   // restore original scale
-//         y: 0.35,
-//         z: 0.63,
-//         duration: 0.8,
-//         ease: "power2.out"
-//       });
-//     }
-//   });
-// }
-
-
-let screwnail
-
-// 2. Load model ONCE, cleanly
-// function loadModel() {
-//   loader.load(
-//     '/models/gasvalve24.glb',
-//     (gltf) => {
-//       model = gltf.scene;
-
-//       // Extract parts by name (do it once)
-//       handle = model.getObjectByName('handel');
-//       screw = model.getObjectByName('screw');
-//       ball = model.getObjectByName('ball');
-//       washer1 = model.getObjectByName('washer1');
-//       washer2 = model.getObjectByName('washer2');
-//       screwNail = model.getObjectByName('screw-nail');
-//       body = model.getObjectByName('body');
-
-
-
-
-//       model.traverse((node) => {
-//         if (node.isMesh) {
-//           node.castShadow = true;
-//           node.receiveShadow = true;
-//         }
-//       });
-
-
-//       prepareModel();
-//       addModelToScene(model, ball);
-//       createAllAnimations();  // ← Now safe to create ScrollTriggers
-//       //  createMirrorAndClone(model);
-//       //  animateMirrorScaleOnSection2();
-//       // scrollAnimation(threeContainer,model)
-//       // createTransformGUI(model)
-//       createTransformGUI(model);
-//       isModelLoaded = true;
-
-//     },
-//     undefined,
-//     (err) => console.error("Error loading model:", err)
-//   );
-
-// }
 
 function loadModel() {
   loader.load(
@@ -673,6 +470,7 @@ function loadModel() {
       addModelToScene(model, ball);
       createAnatomyLabels();
       createAllAnimations();
+     
       
       
       
@@ -758,55 +556,6 @@ function createAllTransformGUI(parts) {
 
 
 
-// ======== orginal version ========
-
-// function prepareModel() {
-
-
-//     mm.add("(max-width: 775px)", () => {  
-//       model.scale.set(1.8,1.8,1.8);
-//   });
-
-//      mm.add("(min-width: 775px)", () => {  
-//      model.scale.set(2.3, 2.3, 2.3);
-//   });
-//   // Center + scale
-//   // model.scale.set(2.3, 2.3, 2.3);
-//   // model.rotation.set(0, 90, 0);
-//   const box = new THREE.Box3().setFromObject(model);
-//   const center = box.getCenter(new THREE.Vector3());
-//   model.position.sub(center);
-
-//   // Initial hidden position (below)
-//   // model.position.y = -5;
-//   // model.position.x = 0;
-//   // model.position.z = 0;
-//   // model.rotation.x = Math.PI * 0.8;
-//   // model.rotation.y = 0;
-//   // model.rotation.z = 0;
-
-//   // model.position.x = 0.800000000000001;
-//   model.position.x = -0.220000000000001;
-//   // model.position.y = -0.70999;
-//   // model.position.y = -0.82;
-//   model.position.y = -1.28;
-//   model.position.z = -0.0800000000000001;
-//   model.rotation.x = THREE.MathUtils.degToRad(51);
-//   model.rotation.y = THREE.MathUtils.degToRad(84.3);
-//   model.rotation.z = THREE.MathUtils.degToRad(-22.2);
-//   // model.rotation.x =144;
-
-
-//   // Optional: clean materials (remove wireframe in production!)
-//   model.traverse((child) => {
-//     if (child.isMesh) {
-//       child.material.metalness = 1;
-//       child.material.roughness = 0.3;
-//       // child.material.wireframe = true; // turn off in prod
-//       if (child.material.map) child.material.map.encoding = THREE.sRGBEncoding;
-//     }
-//   });
-// }
 
   // ========= new version ==========
 function prepareModel() {
@@ -853,522 +602,549 @@ function addModelToScene(model, screw) {
 }
 
 // 4. All animations in one clean function
-function createAllAnimations() {
- gsap.from(model.position, {
-  y: -5, // start hidden below
-  duration: 0.01,
-  scrollTrigger: {
-    trigger: ".front-page",
-    start: "top 90%",
-    end: "top 80%",
-    scrub: false,
-    once: true,
+// function createAllAnimations() {
+//  gsap.from(model.position, {
+//   y: -5, // start hidden below
+//   duration: 0.01,
+//   scrollTrigger: {
+//     trigger: ".front-page",
+//     start: "top 90%",
+//     end: "top 80%",
+//     scrub: false,
+//     once: true,
   
-    onEnter: () => {
-        gsap.timeline()
-        // .to(model.position, { y: -0.70, duration: 2, ease: "power3.out" }, 0)
-        // .to(model.rotation, { x: 0, y: Math.PI / 4, duration: 2, ease: "power3.out" }, 0)
-        .to(model.rotation, {  z:THREE.MathUtils.degToRad(-8.5), duration:4, ease: "power3.out" }, 0)
-        .to(handle.rotation,{z:THREE.MathUtils.degToRad(45), duration:4, ease: "power3.out"},0)
-        .to(model.rotation, {  y:THREE.MathUtils.degToRad(83.4), duration:4, ease: "power3.out" }, 0)
-         .to(companySubtitel ,{ top: "34%", duration:1.5, ease: "power3.out" },0)
-  },
-  onLeave: () => {
-   gsap.to(mirror.position, {y:10, duration: 2, ease: "power3.out"});
+//     onEnter: () => {
+//         gsap.timeline()
+//         // .to(model.position, { y: -0.70, duration: 2, ease: "power3.out" }, 0)
+//         // .to(model.rotation, { x: 0, y: Math.PI / 4, duration: 2, ease: "power3.out" }, 0)
+//         .to(model.rotation, {  z:THREE.MathUtils.degToRad(-8.5), duration:4, ease: "power3.out" }, 0)
+//         .to(handle.rotation,{z:THREE.MathUtils.degToRad(45), duration:4, ease: "power3.out"},0)
+//         .to(model.rotation, {  y:THREE.MathUtils.degToRad(83.4), duration:4, ease: "power3.out" }, 0)
+//          .to(companySubtitel ,{ top: "34%", duration:1.5, ease: "power3.out" },0)
+//   },
+//   onLeave: () => {
+//    gsap.to(mirror.position, {y:10, duration: 2, ease: "power3.out"});
 
-  },
-  onEnterBack: () => {
-   gsap.to(mirror.position, {y:-0.52999, duration: 2, ease: "power3.out"});
-  },
-  onLeaveBack: () => {
-    gsap.to(mirror.position, {y:10, duration: 2, ease: "power3.out"});
-  }
-  }
-});
+//   },
+//   onEnterBack: () => {
+//    gsap.to(mirror.position, {y:-0.52999, duration: 2, ease: "power3.out"});
+//   },
+//   onLeaveBack: () => {
+//     gsap.to(mirror.position, {y:10, duration: 2, ease: "power3.out"});
+//   }
+//   }
+// });
 
  
 
 
-  const firstsection1 = gsap.timeline({
-    scrollTrigger: {
-      trigger: test2,
-      start: "top 80%",
-      end: "bottom bottom",
-      scrub: 1.2,
-    }
-  })
+//   const firstsection1 = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: test2,
+//       start: "top 80%",
+//       end: "bottom bottom",
+//       scrub: 1.2,
+//     }
+//   })
 
-   const firstsection2 = gsap.timeline({
-    scrollTrigger: {
-      trigger:".test-3",
-      start: "top 80%",
-      end: "bottom bottom",
-      scrub: 1.2,
-    }
-  })
+//    const firstsection2 = gsap.timeline({
+//     scrollTrigger: {
+//       trigger:".test-3",
+//       start: "top 80%",
+//       end: "bottom bottom",
+//       scrub: 1.2,
+//     }
+//   })
 
-   const firstsection3 = gsap.timeline({
-    scrollTrigger: {
-      trigger:".test-4",
-      start: "top 80%",
-      end: "bottom bottom",
-      scrub: 1.2,
-    }
-  })
+//    const firstsection3 = gsap.timeline({
+//     scrollTrigger: {
+//       trigger:".test-4",
+//       start: "top 80%",
+//       end: "bottom bottom",
+//       scrub: 1.2,
+//     }
+//   })
 
-  const tlPage1Object = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".page-1",
-      start: "top 80%",
-      end: "bottom bottom",
-      scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
-    }
-  });
-  const tlText1Enter = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".page-1",
-      start: "top top",
-      end: "bottom bottom",
-      scrub: 1.2,            // Add slight smoothing (number = seconds of damping) // Avoid jump on load,
-    }
-  });
-  const tlText1Exit = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".page-1",
-      start: "bottom top",
-      scrub: 1.2,            // Add slight smoothing (number = seconds of damping)// Avoid jump on load,
-    }
-  });
+//   const tlPage1Object = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".page-1",
+//       start: "top 80%",
+//       end: "bottom bottom",
+//       scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
+//     }
+//   });
+//   const tlText1Enter = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".page-1",
+//       start: "top top",
+//       end: "bottom bottom",
+//       scrub: 1.2,            // Add slight smoothing (number = seconds of damping) // Avoid jump on load,
+//     }
+//   });
+//   const tlText1Exit = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".page-1",
+//       start: "bottom top",
+//       scrub: 1.2,            // Add slight smoothing (number = seconds of damping)// Avoid jump on load,
+//     }
+//   });
 
 
 
-  const tlPage2Object = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".page-2",
-      start: "top center",
-      end: "bottom center",
-      scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
-    }
-  });
-  const tlPage2Object2 = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".page-2",
-      start: "center top",
-      end: "bottom center",
-      scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
-    }
-  });
+//   const tlPage2Object = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".page-2",
+//       start: "top center",
+//       end: "bottom center",
+//       scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
+//     }
+//   });
+//   const tlPage2Object2 = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".page-2",
+//       start: "center top",
+//       end: "bottom center",
+//       scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
+//     }
+//   });
 
-  const tlPage3 = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".page-3",
-      start: "top top",
-      end: "bottom center",
-      scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
-    }
-  });
+//   const tlPage3 = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".page-3",
+//       start: "top top",
+//       end: "bottom center",
+//       scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
+//     }
+//   });
 
-  const tlText3Enter = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".page-3",
-      start: "top top",
-      end: "bottom bottom",
-      scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
-      immediateRender: false, // Avoid jump on load,
-    }
-  });
-  const tlText3Exit = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".page-3",
-      start: "bottom top",
-      scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
-      immediateRender: false,
-    }
-  });
+//   const tlText3Enter = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".page-3",
+//       start: "top top",
+//       end: "bottom bottom",
+//       scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
+//       immediateRender: false, // Avoid jump on load,
+//     }
+//   });
+//   const tlText3Exit = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".page-3",
+//       start: "bottom top",
+//       scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
+//       immediateRender: false,
+//     }
+//   });
 
-  const tlPage3Object = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".page-3",
-      start: "center center",
-      end: "bottom bottom",
-      scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
-      immediateRender: false, // Avoid jump on load,
-    }
-  });
+//   const tlPage3Object = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".page-3",
+//       start: "center center",
+//       end: "bottom bottom",
+//       scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
+//       immediateRender: false, // Avoid jump on load,
+//     }
+//   });
 
-  const tlAnatomy = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".anatomy",
-      start: "top 80%",
-      end: "bottom bottom",
-      scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
-    }
-  });
+//   const tlAnatomy = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".anatomy",
+//       start: "top 80%",
+//       end: "bottom bottom",
+//       scrub: 1.2,            // Add slight smoothing (number = seconds of damping)
+//     }
+//   });
 
-  const tlAnatomyExit = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".anatomy-exit",
-      start: "top 80%",
-      end: "bottom bottom",
-      scrub: 1.2, 
-      onEnter: () => showSection("anatomy-exit"),
-onLeave: () => hideSections(["anatomy-exit"]),
-onEnterBack: () => showSection("anatomy-exit"),
-onLeaveBack: () => hideSections(["anatomy-exit"]),          // Add slight smoothing (number = seconds of damping)
-    }
-  });
+//   const tlAnatomyExit = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".anatomy-exit",
+//       start: "top 80%",
+//       end: "bottom bottom",
+//       scrub: 1.2, 
+//       onEnter: () => showSection("anatomy-exit"),
+// onLeave: () => hideSections(["anatomy-exit"]),
+// onEnterBack: () => showSection("anatomy-exit"),
+// onLeaveBack: () => hideSections(["anatomy-exit"]),          // Add slight smoothing (number = seconds of damping)
+//     }
+//   });
 
-  const tlPage4 = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".page-4",
-      start: "top 40%",
-      end: "bottom center",
-      scrub: 1.2,
+//   const tlPage4 = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".page-4",
+//       start: "top 40%",
+//       end: "bottom center",
+//       scrub: 1.2,
  
 
-    }
-  });
+//     }
+//   });
 
 
 
-  const companyperpose = gsap.timeline({ scrollTrigger: { trigger: ".div-1", start: "top top", end: "bottom center", scrub: 1.2, onEnter: () => { gsap.to(screwNail.rotation, { z: "+=" + THREE.MathUtils.degToRad(360), duration: 4, ease: "none", repeat: -1 }); } } });
-  companyperpose.to(screwNail.scale, { x: 7, y: 7, z: 7, ease: "none" }, 0);
-  companyperpose.to(screwNail.position, { x: 0.450000000000001, y: 0.470000000000001, z: -0.00999999999999979, ease: "none" }, 0);
-  companyperpose.to(screwNail.rotation, { x: THREE.MathUtils.degToRad(51.7), y: THREE.MathUtils.degToRad(3), z: THREE.MathUtils.degToRad(-103.2), ease: "none" }, 0);
-  companyperpose.to(screwNail.scale, { x: 1, y: 1, z: 1, ease: "none" }, 9);
-  companyperpose.to(screwNail.position, { x: 0.03890000283718109, y: 0, z: -0.017100008204579353, ease: "none" }, 9);
-  companyperpose.to(screwNail.rotation, { x: THREE.MathUtils.degToRad(0), y: THREE.MathUtils.degToRad(0), z: THREE.MathUtils.degToRad(0), ease: "none" }, 9);
 
-  const companyperpose2 = gsap.timeline({ scrollTrigger: { trigger: ".div-2", start: "top top", end: "bottom center", scrub: 1.2, } });
-  companyperpose2.to(handle.scale, { x: 5, y: 5, z: 5, duration: 2, ease: "none" }, 0);
-  companyperpose2.to(handle.position, { x: 0.66, y: 0.9, z: 0.17, duration: 2, ease: "none" }, 0);
-  companyperpose2.to(handle.rotation, { x: THREE.MathUtils.degToRad(-32.4), y: THREE.MathUtils.degToRad(34), z: THREE.MathUtils.degToRad(95.9), duration: 2, ease: "none" }, 0);
-  companyperpose2.to(handle.scale, { x: 1, y: 1, z: 1, duration: 2, ease: "none" }, 9);
-  companyperpose2.to(handle.position, { x: 0.03895651549100876, y: 0.0003372765495441854, z: -0.0336117260158062, duration: 2, ease: "none" }, 9);
-  companyperpose2.to(handle.rotation, { x: THREE.MathUtils.degToRad(0), y: THREE.MathUtils.degToRad(0), z: THREE.MathUtils.degToRad(0), duration: 2, ease: "none" }, 9);
-
-  const companyperpose3 = gsap.timeline({ scrollTrigger: { trigger: ".div-3", start: "top top", end: "bottom center", scrub: 1.2, } });
-  companyperpose3.to(ball.scale, { x: 5, y: 5, z: 5, duration: 2, ease: "none" }, 0);
-  companyperpose3.to(ball.position, { x: 0.48, y: 0.66, z: 0.17, duration: 2, ease: "none" }, 0);
-  companyperpose3.to(ball.rotation, { x: THREE.MathUtils.degToRad(-5.89999999999998), y: THREE.MathUtils.degToRad(7.40000000000001), z: THREE.MathUtils.degToRad(38.4), duration: 2, ease: "none" }, 0);
-  companyperpose3.to(ball.scale, { x: 1, y: 1, z: 1, duration: 2, ease: "none" }, 9);
-  companyperpose3.to(ball.position, { x: 0.03889999911189079, y: 0, z: 0, duration: 2, ease: "none" }, 9);
-  companyperpose3.to(ball.rotation, { x: THREE.MathUtils.degToRad(0), y: THREE.MathUtils.degToRad(0), z: THREE.MathUtils.degToRad(-90.00001735754323), duration: 2, ease: "none" }, 9);
-
-  ScrollTrigger.matchMedia({
-
-  // Only set up the animations when the screen is wider than 1094px
-  "(min-width: 1095px)": function () {
-
-    // ========== companyperpose (div-1) ==========
-    const companyperpose = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".div-1",
-        start: "top top",
-        end: "bottom center",
-        scrub: 1.2,
-        onEnter: () => {
-          gsap.to(screwNail.rotation, {
-            z: "+=" + THREE.MathUtils.degToRad(360),
-            duration: 4,
-            ease: "none",
-            repeat: -1,
-          });
-        },
-      },
-    });
-
-    companyperpose.to(
-      screwNail.scale,
-      { x: 7, y: 7, z: 7, ease: "none" },
-      0
-    );
-    companyperpose.to(
-      screwNail.position,
-      {
-        x: 0.450000000000001,
-        y: 0.470000000000001,
-        z: -0.00999999999999979,
-        ease: "none",
-      },
-      0
-    );
-    companyperpose.to(
-      screwNail.rotation,
-      {
-        x: THREE.MathUtils.degToRad(51.7),
-        y: THREE.MathUtils.degToRad(3),
-        z: THREE.MathUtils.degToRad(-103.2),
-        ease: "none",
-      },
-      0
-    );
-    companyperpose.to(
-      screwNail.scale,
-      { x: 1, y: 1, z: 1, ease: "none" },
-      9
-    );
-    companyperpose.to(
-      screwNail.position,
-      {
-        x: 0.03890000283718109,
-        y: 0,
-        z: -0.017100008204579353,
-        ease: "none",
-      },
-      9
-    );
-    companyperpose.to(
-      screwNail.rotation,
-      {
-        x: THREE.MathUtils.degToRad(0),
-        y: THREE.MathUtils.degToRad(0),
-        z: THREE.MathUtils.degToRad(0),
-        ease: "none",
-      },
-      9
-    );
-
-    // ========== companyperpose2 (div-2) ==========
-    const companyperpose2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".div-2",
-        start: "top top",
-        end: "bottom center",
-        scrub: 1.2,
-      },
-    });
-
-    companyperpose2.to(
-      handle.scale,
-      { x: 5, y: 5, z: 5, duration: 2, ease: "none" },
-      0
-    );
-    companyperpose2.to(
-      handle.position,
-      { x: 0.66, y: 0.9, z: 0.17, duration: 2, ease: "none" },
-      0
-    );
-    companyperpose2.to(
-      handle.rotation,
-      {
-        x: THREE.MathUtils.degToRad(-32.4),
-        y: THREE.MathUtils.degToRad(34),
-        z: THREE.MathUtils.degToRad(95.9),
-        duration: 2,
-        ease: "none",
-      },
-      0
-    );
-    companyperpose2.to(
-      handle.scale,
-      { x: 1, y: 1, z: 1, duration: 2, ease: "none" },
-      9
-    );
-    companyperpose2.to(
-      handle.position,
-      {
-        x: 0.03895651549100876,
-        y: 0.0003372765495441854,
-        z: -0.0336117260158062,
-        duration: 2,
-        ease: "none",
-      },
-      9
-    );
-    companyperpose2.to(
-      handle.rotation,
-      {
-        x: THREE.MathUtils.degToRad(0),
-        y: THREE.MathUtils.degToRad(0),
-        z: THREE.MathUtils.degToRad(0),
-        duration: 2,
-        ease: "none",
-      },
-      9
-    );
-
-    // ========== companyperpose3 (div-3) ==========
-    const companyperpose3 = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".div-3",
-        start: "top top",
-        end: "bottom center",
-        scrub: 1.2,
-      },
-    });
-
-    companyperpose3.to(
-      ball.scale,
-      { x: 5, y: 5, z: 5, duration: 2, ease: "none" },
-      0
-    );
-    companyperpose3.to(
-      ball.position,
-      { x: 0.48, y: 0.66, z: 0.17, duration: 2, ease: "none" },
-      0
-    );
-    companyperpose3.to(
-      ball.rotation,
-      {
-        x: THREE.MathUtils.degToRad(-5.89999999999998),
-        y: THREE.MathUtils.degToRad(7.40000000000001),
-        z: THREE.MathUtils.degToRad(38.4),
-        duration: 2,
-        ease: "none",
-      },
-      0
-    );
-    companyperpose3.to(
-      ball.scale,
-      { x: 1, y: 1, z: 1, duration: 2, ease: "none" },
-      9
-    );
-    companyperpose3.to(
-      ball.position,
-      { x: 0.03889999911189079, y: 0, z: 0, duration: 2, ease: "none" },
-      9
-    );
-    companyperpose3.to(
-      ball.rotation,
-      {
-        x: THREE.MathUtils.degToRad(0),
-        y: THREE.MathUtils.degToRad(0),
-        z: THREE.MathUtils.degToRad(-90.00001735754323),
-        duration: 2,
-        ease: "none",
-      },
-      9
-    );
-
-    // Cleanup: when the screen becomes ≤1094px again,
-    // kill the infinite rotation tween so it doesn't run invisibly
-    return function () {
-      gsap.killTweensOf(screwNail.rotation);
-    };
-  },
-});
-
-  firstsection1.to(".test", {   "--stop": "0%",ease: "none", }, 0);
-  firstsection1.to(firstSlogan, {opacity:0,ease: "none", }, 0);
-  firstsection1.to(secondSlogan, {opacity:0,ease: "none", }, 0);
-  firstsection1.to(companyPrivetText, {opacity:0,ease: "none", }, 0);
-  firstsection1.to(".first-section-squre1", {opacity:0,ease: "none", }, 0);
-  firstsection1.to(".first-section-squre2", {opacity:0,ease: "none", }, 0);
-  firstsection1.to(".first-section-squre3", {opacity:0,ease: "none", }, 0);
-   firstsection1.to(".brand-name", {opacity:0,ease: "none", duration:1 }, 0);
-  firstsection1.to(model.scale, {x:desktop.firstSection.modelScaleX,z:desktop.firstSection.modelScaleY,y:desktop.firstSection.modelScaleZ,ease: "none",duration:2 }, 0);
-  firstsection1.to(model.rotation, {y:THREE.MathUtils.degToRad(desktop.firstSection.modelRotationY),ease: "none",duration:2 }, 0);
-  firstsection1.to(model.position, {y:getModelYPosition(),ease: "none",duration:2 }, 0);
-   firstsection1.to(handle.rotation, {z:THREE.MathUtils.degToRad(desktop.firstSection.handelRotationZ),ease: "none",duration:2 }, 0);
+//   firstsection1.to(".test", {   "--stop": "0%",ease: "none", }, 0);
+//   firstsection1.to(firstSlogan, {opacity:0,ease: "none", }, 0);
+//   firstsection1.to(secondSlogan, {opacity:0,ease: "none", }, 0);
+//   firstsection1.to(companyPrivetText, {opacity:0,ease: "none", }, 0);
+//   firstsection1.to(".first-section-squre1", {opacity:0,ease: "none", }, 0);
+//   firstsection1.to(".first-section-squre2", {opacity:0,ease: "none", }, 0);
+//   firstsection1.to(".first-section-squre3", {opacity:0,ease: "none", }, 0);
+//    firstsection1.to(".brand-name", {opacity:0,ease: "none", duration:1 }, 0);
+//   firstsection1.to(model.scale, {x:desktop.firstSection.modelScaleX,z:desktop.firstSection.modelScaleY,y:desktop.firstSection.modelScaleZ,ease: "none",duration:2 }, 0);
+//   firstsection1.to(model.rotation, {y:THREE.MathUtils.degToRad(desktop.firstSection.modelRotationY),ease: "none",duration:2 }, 0);
+//   firstsection1.to(model.position, {y:getModelYPosition(),ease: "none",duration:2 }, 0);
+//    firstsection1.to(handle.rotation, {z:THREE.MathUtils.degToRad(desktop.firstSection.handelRotationZ),ease: "none",duration:2 }, 0);
 
   
 
 
-  firstsection2.to(".test-4-h1", {opacity:1,ease: "none", }, 1);
-  firstsection2.to(".test-4-h1", {opacity:0,ease: "none", }, 8);
-  //  firstsection2.to(model.position, {y:getModelYPosition(),ease: "none", }, 0);
+//   firstsection2.to(".test-4-h1", {opacity:1,ease: "none", }, 1);
+//   firstsection2.to(".test-4-h1", {opacity:0,ease: "none", }, 8);
+//   //  firstsection2.to(model.position, {y:getModelYPosition(),ease: "none", }, 0);
 
 
- firstsection3.to(".test-4-h2", {opacity:1,ease: "none", }, 2);
- firstsection3.to(".test-4-h2", {opacity:0,ease: "none", }, 8);
+//  firstsection3.to(".test-4-h2", {opacity:1,ease: "none", }, 2);
+//  firstsection3.to(".test-4-h2", {opacity:0,ease: "none", }, 8);
 
-  firstsection2.to(".test-4-h1-container", {opacity:1,ease: "none", }, 0);
- firstsection3.to(".test-4-h1-container", {opacity:0,ease: "none", }, 8);
+//   firstsection2.to(".test-4-h1-container", {opacity:1,ease: "none", }, 0);
+//  firstsection3.to(".test-4-h1-container", {opacity:0,ease: "none", }, 8);
 
 
-const page1Model=Page1ObjectPosition()
-  // === PAGE1 === //
-  //  tlPage.to(handle.rotation, { z: Math.PI / 2, duration: 2,ease: "none" }, 0);
-  //  tlPage.to(screw.rotation, { z: Math.PI / 2, duration: 2, ease: "none"}, 0);
-       tlPage1Object.to(model.scale, { x:page1Model.x, y:page1Model.y, z:page1Model.z, duration: 2,ease: "none" }, 0);
-      tlPage1Object.to(model.position, { x:getModelXPosition(), y:desktop.page1.modelPositionY, z:desktop.page1.modelPositionZ, duration: 2,ease: "none" }, 0);
-      tlPage1Object.to(model.rotation, { x:desktop.page1.modelRotationX, y:desktop.page1.modelRotationY, z:desktop.page1.modelRotationZ, duration: 2, ease: "none"}, 0);
-      tlText1Enter.to(text1, { opacity:1, duration: 2,ease: "none", stagger:0.25 }, 0);
-      tlText1Enter.to(".product-info-container" , { opacity:1, duration: 2,ease: "none", stagger:0.25 }, 0);
-      tlText1Exit.to(text1 , { opacity:0, duration: 2,ease: "none", stagger:0.25 }, 0);
-      tlText1Exit.to(".product-info-container" , { opacity:0, duration: 2,ease: "none", stagger:0.25 }, 0);
+// const page1Model=Page1ObjectPosition()
+//   // === PAGE1 === //
+
+//        tlPage1Object.to(model.scale, { x:page1Model.x, y:page1Model.y, z:page1Model.z, duration: 2,ease: "none" }, 0);
+//       tlPage1Object.to(model.position, { x:getModelXPosition(), y:desktop.page1.modelPositionY, z:desktop.page1.modelPositionZ, duration: 2,ease: "none" }, 0);
+//       tlPage1Object.to(model.rotation, { x:desktop.page1.modelRotationX, y:desktop.page1.modelRotationY, z:desktop.page1.modelRotationZ, duration: 2, ease: "none"}, 0);
+//       tlText1Enter.to(text1, { opacity:1, duration: 2,ease: "none", stagger:0.25 }, 0);
+//       tlText1Enter.to(".product-info-container" , { opacity:1, duration: 2,ease: "none", stagger:0.25 }, 0);
+//       tlText1Exit.to(text1 , { opacity:0, duration: 2,ease: "none", stagger:0.25 }, 0);
+//       tlText1Exit.to(".product-info-container" , { opacity:0, duration: 2,ease: "none", stagger:0.25 }, 0);
  
 
-  // === PAGE2 === //
-      // tlPage2.to(screw.position,  { y: -0.01, x: 0.09, z: -0.1, ease: "none" }, 0);
-      // tlPage2.to(screw.rotation,  { x: -Math.PI, y: 0.25, z: -0.93, ease: "none" }, 0);
-      // tlPage2.to(handle.position, { y: -0.04, x: 0.07, z: -0.08, ease: "none" }, 0);
-      // tlPage2.to(handle.rotation, { x: -0.22, ease: "none" }, 0);
-      // tlPage2Object.to(model.position,  {y:0.27,x:0.03,z:0.41, ease: "none" }, 0);
-      // tlPage2Object.to(model.rotation,  { y:2.04, x:0.04, z: 0.05, ease: "none" }, 0);
-       tlPage2Object.to(model.position,  {y:Page2ObjectPosition().y,x:desktop.page2.modelPositionX,z:desktop.page2.modelPositionZ, ease: "none" }, 0);
-      tlPage2Object.to(model.rotation,  { y:desktop.page2.modelRotationY, x:desktop.page2.modelRotationX, z:desktop.page2.modelRotationZ, ease: "none" }, 0);
-      tlPage2Object2.to(screw.position,  { z:desktop.page2.screwPositionZ, ease: "none" }, 0);
-      tlPage2Object2.to(screwNail.position,  { z:desktop.page2.screwNailPositionZ, ease: "none" }, 0);
-      tlPage2Object2.to(screwNail.rotation,  { z:desktop.page2.screwNailRotationZ, ease: "none" }, 0);
+//   // === PAGE2 === //
+
+//        tlPage2Object.to(model.position,  {y:Page2ObjectPosition().y,x:desktop.page2.modelPositionX,z:desktop.page2.modelPositionZ, ease: "none" }, 0);
+//       tlPage2Object.to(model.rotation,  { y:desktop.page2.modelRotationY, x:desktop.page2.modelRotationX, z:desktop.page2.modelRotationZ, ease: "none" }, 0);
+//       tlPage2Object2.to(screw.position,  { z:desktop.page2.screwPositionZ, ease: "none" }, 0);
+//       tlPage2Object2.to(screwNail.position,  { z:desktop.page2.screwNailPositionZ, ease: "none" }, 0);
+//       tlPage2Object2.to(screwNail.rotation,  { z:desktop.page2.screwNailRotationZ, ease: "none" }, 0);
 
 
 
-  // === PAGE3 === // 
-     // tlPage3.to(screw.position,  { y: 0, x: 0.04, z: -0.04, ease: "none" }, 0);
-      // tlPage3.to(screw.rotation,  { x: -3.03, y: -0.08, z: 0, ease: "none" }, 0);
-      // tlPage3.to(handle.position, { y: 0.000337, x: 0.03895, z: -0.03361, ease: "none" }, 0);
-      // tlPage3.to(handle.rotation, { x: 0, ease: "none" }, 0);
-       tlText3Enter.to(text3, { opacity:1, duration: 2,ease: "none", stagger:0.25 }, 0);
-        tlText3Enter.to(".product-info-container-2", { opacity:1, duration: 2,ease: "none", stagger:0.25 }, 0);
-      tlText3Exit.to(text3 , { opacity:0, duration: 2,ease: "none", stagger:0.25 }, 0);
-      tlText3Exit.to(".product-info-container-2" , { opacity:0, duration: 2,ease: "none", stagger:0.25 }, 0);
-      tlPage3Object.to(screw.position,  { z: -0.03939329460263252, ease: "none" }, 0);
-      tlPage3Object.to(screwNail.position,  { z:-0.017100008204579353, ease: "none" }, 0);
+//   // === PAGE3 === // 
 
-  // === anatomy === //
-const ModelPosition = getModelPosition() 
-const rotation = getRotation();
-const position = getBodyEnterPosition();
-const positionExit = getBodyExitPosition();
-const position2 = getValveHeadEnterPosition();
-const positionExit2 = getValveHeadExitPosition();
-      // === anatomy === //
-      tlAnatomy.to(model.scale,{x:1.3,y:1.3,z:1.3,duration: 2,ease: "none"});
-        // tlAnatomy.to(model.position,{x:-0.0800000000000001,y:0.5,z:0.890000000000001,duration: 2,ease: "none"});
-         tlAnatomy.to(model.position,{x:ModelPosition.x,y:ModelPosition.y,z:ModelPosition.z,duration: 2,ease: "none"});
-         tlAnatomy.to(model.rotation,{x:THREE.MathUtils.degToRad(rotation.x),y:THREE.MathUtils.degToRad(rotation.y),z:THREE.MathUtils.degToRad(rotation.z),duration: 2,ease: "none"});
-           tlAnatomy.to(screw.position,{z:-0.0999999999999996,ease: "none"},6);
-           tlAnatomy.to(screw.rotation,{z:42.8,ease: "none"},6);
-            //  tlAnatomy.to(screwNail.position,{z:-0.0600000000000005,ease: "none"},6);
-            tlAnatomy.to(screwNail.position,{z:-0.04,ease: "none"},6);
-           tlAnatomy.to(screwNail.rotation,{z:180,ease:"none"},6);
-              // tlAnatomy.to(handle.position,{z:-0.0499999999999989,ease: "none"},6);
-               tlAnatomy.to(handle.position,{z:-0.08,ease: "none"},6);
-                //  tlAnatomy.to(body.position,{z:0.0500000000000007,ease: "none"},6);
-               tlAnatomy.to(body.position,{x:position.x,y:position.y,z:position.z,ease: "none"},6);
-               tlAnatomy.to(valveHead.position,{x:position2.x,y:position2.y,z:position2.z,ease: "none"},6);
-                  tlAnatomy.to(washer1.position,{x:0.0600000000000005,ease: "none"},6);
-                   tlAnatomy.to(washer2.position,{x:0.0199999999999996,ease: "none"},6);
+//        tlText3Enter.to(text3, { opacity:1, duration: 2,ease: "none", stagger:0.25 }, 0);
+//         tlText3Enter.to(".product-info-container-2", { opacity:1, duration: 2,ease: "none", stagger:0.25 }, 0);
+//       tlText3Exit.to(text3 , { opacity:0, duration: 2,ease: "none", stagger:0.25 }, 0);
+//       tlText3Exit.to(".product-info-container-2" , { opacity:0, duration: 2,ease: "none", stagger:0.25 }, 0);
+//       tlPage3Object.to(screw.position,  { z: -0.03939329460263252, ease: "none" }, 0);
+//       tlPage3Object.to(screwNail.position,  { z:-0.017100008204579353, ease: "none" }, 0);
+
+//   // === anatomy === //
+// const ModelPosition = getModelPosition() 
+// const rotation = getRotation();
+// const position = getBodyEnterPosition();
+// const positionExit = getBodyExitPosition();
+// const position2 = getValveHeadEnterPosition();
+// const positionExit2 = getValveHeadExitPosition();
+//       // === anatomy === //
+//       tlAnatomy.to(model.scale,{x:1.3,y:1.3,z:1.3,duration: 2,ease: "none"});
+//          tlAnatomy.to(model.position,{x:ModelPosition.x,y:ModelPosition.y,z:ModelPosition.z,duration: 2,ease: "none"});
+//          tlAnatomy.to(model.rotation,{x:THREE.MathUtils.degToRad(rotation.x),y:THREE.MathUtils.degToRad(rotation.y),z:THREE.MathUtils.degToRad(rotation.z),duration: 2,ease: "none"});
+//            tlAnatomy.to(screw.position,{z:-0.0999999999999996,ease: "none"},6);
+//            tlAnatomy.to(screw.rotation,{z:42.8,ease: "none"},6);
+//             tlAnatomy.to(screwNail.position,{z:-0.04,ease: "none"},6);
+//            tlAnatomy.to(screwNail.rotation,{z:180,ease:"none"},6);
+//                tlAnatomy.to(handle.position,{z:-0.08,ease: "none"},6);
+//                tlAnatomy.to(body.position,{x:position.x,y:position.y,z:position.z,ease: "none"},6);
+//                tlAnatomy.to(valveHead.position,{x:position2.x,y:position2.y,z:position2.z,ease: "none"},6);
+//                   tlAnatomy.to(washer1.position,{x:0.0600000000000005,ease: "none"},6);
+//                    tlAnatomy.to(washer2.position,{x:0.0199999999999996,ease: "none"},6);
 
 
 
-  // // === anatomy-exit === //
+//   // // === anatomy-exit === //
   
-     tlAnatomyExit.to(screw.position,{z:-0.03939329460263252,ease: "none",duration:2},9);
-     tlAnatomyExit.to(screw.rotation,{z:-60.07620173045744,ease: "none",duration:2},9);
-     tlAnatomyExit.to(screwNail.position,{z:-0.017100008204579353,ease: "none",duration:2},9);
-     tlAnatomyExit.to(screwNail.rotation,{z:0,ease:"none",duration:2},9);
-     tlAnatomyExit.to(handle.position,{z:-0.0336117260158062,ease: "none",duration:2},9);
-     tlAnatomyExit.to(body.position,{x:positionExit.x,y:positionExit.y,z:positionExit.z,ease: "none",duration:2},9);
-      tlAnatomyExit.to(valveHead.position,{x:positionExit2.x,y:positionExit2.y,z:positionExit2.z,ease: "none",duration:2},9);
-     tlAnatomyExit.to(washer1.position,{x:0.0502999946475029,ease: "none",duration:2},9);
-     tlAnatomyExit.to(washer2.position,{x:0.0600000000000005,ease: "none",duration:2},9);
+//      tlAnatomyExit.to(screw.position,{z:-0.03939329460263252,ease: "none",duration:2},9);
+//      tlAnatomyExit.to(screw.rotation,{z:-60.07620173045744,ease: "none",duration:2},9);
+//      tlAnatomyExit.to(screwNail.position,{z:-0.017100008204579353,ease: "none",duration:2},9);
+//      tlAnatomyExit.to(screwNail.rotation,{z:0,ease:"none",duration:2},9);
+//      tlAnatomyExit.to(handle.position,{z:-0.0336117260158062,ease: "none",duration:2},9);
+//      tlAnatomyExit.to(body.position,{x:positionExit.x,y:positionExit.y,z:positionExit.z,ease: "none",duration:2},9);
+//       tlAnatomyExit.to(valveHead.position,{x:positionExit2.x,y:positionExit2.y,z:positionExit2.z,ease: "none",duration:2},9);
+//      tlAnatomyExit.to(washer1.position,{x:0.0502999946475029,ease: "none",duration:2},9);
+//      tlAnatomyExit.to(washer2.position,{x:0.0600000000000005,ease: "none",duration:2},9);
 
 
 
-  // === PAGE4 === //
+//   // === PAGE4 === //
 
-      tlPage4.to(model.position, { y: -5, duration: 2 }, 0);
-      tlPage4.to(model.rotation, { x: 0, y: 0, duration: 2, }, 0);
-      // tlPage4.to(model.scale, { x: 1, y: 1, z: 1, duration: 2 }, 0);
+//       tlPage4.to(model.position, { y: -5, duration: 2 }, 0);
+//       tlPage4.to(model.rotation, { x: 0, y: 0, duration: 2, }, 0);
 
 
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+// =============================================================
+//  MASTER TIMELINE  (one ScrollTrigger drives everything)
+//  Master time = scroll pixels, so every section keeps exactly
+//  the same scroll start/end it had before. Each old timeline
+//  is stretched to its old scroll range and nested in the master.
+// =============================================================
+
+let masterTL = null;
+
+// Read the real scroll start/end of a trigger (same math ScrollTrigger uses)
+function getRange(trigger, start, end) {
+  const config = { trigger, start };
+  if (end !== undefined) config.end = end;
+  const st = ScrollTrigger.create(config);
+  const range = { start: st.start, end: st.end };
+  st.kill();
+  return range;
 }
 
+// Stretch a timeline to its old scroll range and place it on the master
+// minPx: ranges with start === end (e.g. "bottom top" with no end) get a tiny range
+function addSection(master, tl, trigger, start, end, minPx = 1) {
+  const r = getRange(trigger, start, end);
+  const len = Math.max(r.end - r.start, minPx);
+  tl.duration(len);          // keeps all inner positions proportional
+  master.add(tl, r.start);   // starts at the same scroll position as before
+}
 
+// -------------------------------------------------------------
+//  Intro (time based, NOT scrubbed) - stays separate, unchanged
+// -------------------------------------------------------------
+function createIntroAnimation() {
+  gsap.from(model.position, {
+    y: -5, // start hidden below
+    duration: 0.01,
+    scrollTrigger: {
+      trigger: ".front-page",
+      start: "top 90%",
+      end: "top 80%",
+      scrub: false,
+      once: true,
 
+      onEnter: () => {
+        gsap.timeline()
+          .to(model.rotation, { z: THREE.MathUtils.degToRad(-8.5), duration: 4, ease: "power3.out" }, 0)
+          .to(handle.rotation, { z: THREE.MathUtils.degToRad(45), duration: 4, ease: "power3.out" }, 0)
+          .to(model.rotation, { y: THREE.MathUtils.degToRad(83.4), duration: 4, ease: "power3.out" }, 0)
+          .to(companySubtitel, { top: "34%", duration: 1.5, ease: "power3.out" }, 0);
+      },
+      onLeave: () => {
+        gsap.to(mirror.position, { y: 10, duration: 2, ease: "power3.out" });
+      },
+      onEnterBack: () => {
+        gsap.to(mirror.position, { y: -0.52999, duration: 2, ease: "power3.out" });
+      },
+      onLeaveBack: () => {
+        gsap.to(mirror.position, { y: 10, duration: 2, ease: "power3.out" });
+      }
+    }
+  });
+}
+
+// -------------------------------------------------------------
+//  Master scrub timeline
+// -------------------------------------------------------------
+function createMasterTimeline() {
+  // clean rebuild (resets values back to start before killing)
+  if (masterTL) {
+    masterTL.progress(0);
+    masterTL.scrollTrigger && masterTL.scrollTrigger.kill();
+    masterTL.kill();
+  }
+
+  const maxScroll = ScrollTrigger.maxScroll(window);
+
+  const master = gsap.timeline({
+    scrollTrigger: {
+      start: 0,
+      end: () => master.duration(), // 1 time unit = 1 scroll pixel
+      scrub: 1.2,
+       immediateRender: false,                   // same smoothing as before
+      invalidateOnRefresh: true,
+    }
+  });
+
+  // spacer so the master is at least as long as the page
+  master.to({}, { duration: maxScroll, ease: "none" }, 0);
+
+  // ---------------- FIRST SECTION ----------------
+  const firstsection1 = gsap.timeline();
+  const firstsection2 = gsap.timeline();
+  const firstsection3 = gsap.timeline();
+
+  firstsection1.to(".test", { "--stop": "0%", ease: "none" }, 0);
+  firstsection1.to(firstSlogan, { opacity: 0, ease: "none" }, 0);
+  firstsection1.to(secondSlogan, { opacity: 0, ease: "none" }, 0);
+  firstsection1.to(thirdSlogan, { opacity: 0, ease: "none" }, 0);
+  firstsection1.to(companyPrivetText, { opacity: 0, ease: "none" }, 0);
+  firstsection1.to(".first-section-squre1", { opacity: 0, ease: "none" }, 0);
+  firstsection1.to(".first-section-squre2", { opacity: 0, ease: "none" }, 0);
+  firstsection1.to(".first-section-squre3", { opacity: 0, ease: "none" }, 0);
+  firstsection1.to(".brand-name", { opacity: 0, ease: "none", duration: 1 }, 0);
+  firstsection1.to(model.scale, { x: desktop.firstSection.modelScaleX, z: desktop.firstSection.modelScaleY, y: desktop.firstSection.modelScaleZ, ease: "none", duration: 2 }, 0);
+  firstsection1.to(model.rotation, { y: THREE.MathUtils.degToRad(desktop.firstSection.modelRotationY), ease: "none", duration: 2 }, 0);
+  firstsection1.to(model.position, { y: getModelYPosition(), ease: "none", duration: 2 }, 0);
+  firstsection1.to(handle.rotation, { z: THREE.MathUtils.degToRad(desktop.firstSection.handelRotationZ), ease: "none", duration: 2 }, 0);
+
+  firstsection2.to(".test-4-h1", { opacity: 1, ease: "none" }, 1);
+  firstsection2.to(".test-4-h1", { opacity: 0, ease: "none" }, 8);
+  firstsection2.to(".test-4-h1-container", { opacity: 1, ease: "none" }, 0);
+
+  firstsection3.to(".test-4-h2", { opacity: 1, ease: "none" }, 2);
+  firstsection3.to(".test-4-h2", { opacity: 0, ease: "none" }, 8);
+  firstsection3.to(".test-4-h1-container", { opacity: 0, ease: "none" }, 8);
+
+  addSection(master, firstsection1, test2, "top 80%", "bottom bottom");
+  addSection(master, firstsection2, ".test-3", "top 80%", "bottom bottom");
+  addSection(master, firstsection3, ".test-4", "top 80%", "bottom bottom");
+
+  // ---------------- PAGE 1 ----------------
+  const page1Model = Page1ObjectPosition();
+
+  const tlPage1Object = gsap.timeline();
+  const tlText1Enter = gsap.timeline();
+  const tlText1Exit = gsap.timeline();
+
+  tlPage1Object.to(model.scale, { x: page1Model.x, y: page1Model.y, z: page1Model.z, duration: 2, ease: "none" }, 0);
+  tlPage1Object.to(model.position, { x: getModelXPosition(), y: desktop.page1.modelPositionY, z: desktop.page1.modelPositionZ, duration: 2, ease: "none" }, 0);
+  tlPage1Object.to(model.rotation, { x: desktop.page1.modelRotationX, y: desktop.page1.modelRotationY, z: desktop.page1.modelRotationZ, duration: 2, ease: "none" }, 0);
+  tlText1Enter.to(text1, { opacity: 1, duration: 2, ease: "none", stagger: 0.25 }, 0);
+  tlText1Enter.to(".product-info-container", { opacity: 1, duration: 2, ease: "none", stagger: 0.25 }, 0);
+  tlText1Exit.to(text1, { opacity: 0, duration: 2, ease: "none", stagger: 0.25 }, 0);
+  tlText1Exit.to(".product-info-container", { opacity: 0, duration: 2, ease: "none", stagger: 0.25 }, 0);
+
+  addSection(master, tlPage1Object, ".page-1", "top 80%", "bottom bottom");
+  addSection(master, tlText1Enter, ".page-1", "top top", "bottom bottom");
+  addSection(master, tlText1Exit, ".page-1", "bottom top");
+
+  // ---------------- PAGE 2 ----------------
+  const tlPage2Object = gsap.timeline();
+  const tlPage2Object2 = gsap.timeline();
+
+  tlPage2Object.to(model.position, { y: Page2ObjectPosition().y, x: desktop.page2.modelPositionX, z: desktop.page2.modelPositionZ, ease: "none" }, 0);
+  tlPage2Object.to(model.rotation, { y: desktop.page2.modelRotationY, x: desktop.page2.modelRotationX, z: desktop.page2.modelRotationZ, ease: "none" }, 0);
+  tlPage2Object2.to(screw.position, { z: desktop.page2.screwPositionZ, ease: "none" }, 0);
+  tlPage2Object2.to(screwNail.position, { z: desktop.page2.screwNailPositionZ, ease: "none" }, 0);
+  tlPage2Object2.to(screwNail.rotation, { z: desktop.page2.screwNailRotationZ, ease: "none" }, 0);
+
+  addSection(master, tlPage2Object, ".page-2", "top center", "bottom center");
+  addSection(master, tlPage2Object2, ".page-2", "center top", "bottom center");
+
+  // ---------------- PAGE 3 ----------------
+  const tlText3Enter = gsap.timeline();
+  const tlText3Exit = gsap.timeline();
+  const tlPage3Object = gsap.timeline();
+
+  tlText3Enter.to(text3, { opacity: 1, duration: 2, ease: "none", stagger: 0.25 }, 0);
+  tlText3Enter.to(".product-info-container-2", { opacity: 1, duration: 2, ease: "none", stagger: 0.25 }, 0);
+  tlText3Exit.to(text3, { opacity: 0, duration: 2, ease: "none", stagger: 0.25 }, 0);
+  tlText3Exit.to(".product-info-container-2", { opacity: 0, duration: 2, ease: "none", stagger: 0.25 }, 0);
+  tlPage3Object.to(screw.position, { z: -0.03939329460263252, duration: 2, ease: "none" }, 0);
+  tlPage3Object.to(screwNail.position, { z: -0.017100008204579353, duration: 2 ,ease: "none" }, 0);
+
+  addSection(master, tlText3Enter, ".page-3", "top top", "bottom bottom");
+  addSection(master, tlText3Exit, ".page-3", "bottom top");
+  addSection(master, tlPage3Object, ".page-3", "center center","bottom bottom");
+
+  // ---------------- ANATOMY ----------------
+  const ModelPosition = getModelPosition();
+  const rotation = getRotation();
+  const position = getBodyEnterPosition();
+  const positionExit = getBodyExitPosition();
+  const position2 = getValveHeadEnterPosition();
+  const positionExit2 = getValveHeadExitPosition();
+
+  const tlAnatomy = gsap.timeline();
+  tlAnatomy.to(model.scale, { x: 1.3, y: 1.3, z: 1.3, duration: 2, ease: "none" });
+  tlAnatomy.to(model.position, { x: ModelPosition.x, y: ModelPosition.y, z: ModelPosition.z, duration: 2, ease: "none" });
+  tlAnatomy.to(model.rotation, { x: THREE.MathUtils.degToRad(rotation.x), y: THREE.MathUtils.degToRad(rotation.y), z: THREE.MathUtils.degToRad(rotation.z), duration: 2, ease: "none" });
+  tlAnatomy.to(screw.position, { z: -0.0999999999999996, ease: "none" }, 6);
+  tlAnatomy.to(screw.rotation, { z: 42.8, ease: "none" }, 6);
+  tlAnatomy.to(screwNail.position, { z: -0.04, ease: "none" }, 6);
+  tlAnatomy.to(screwNail.rotation, { z: 180, ease: "none" }, 6);
+  tlAnatomy.to(handle.position, { z: -0.08, ease: "none" }, 6);
+  tlAnatomy.to(body.position, { x: position.x, y: position.y, z: position.z, ease: "none" }, 6);
+  tlAnatomy.to(valveHead.position, { x: position2.x, y: position2.y, z: position2.z, ease: "none" }, 6);
+  tlAnatomy.to(washer1.position, { x: 0.0600000000000005, ease: "none" }, 6);
+  tlAnatomy.to(washer2.position, { x: 0.0199999999999996, ease: "none" }, 6);
+
+  // ---------------- ANATOMY EXIT ----------------
+  const tlAnatomyExit = gsap.timeline();
+  tlAnatomyExit.to(screw.position, { z: -0.03939329460263252, ease: "none", duration: 2 }, 9);
+  tlAnatomyExit.to(screw.rotation, { z: -60.07620173045744, ease: "none", duration: 2 }, 9);
+  tlAnatomyExit.to(screwNail.position, { z: -0.017100008204579353, ease: "none", duration: 2 }, 9);
+  tlAnatomyExit.to(screwNail.rotation, { z: 0, ease: "none", duration: 2 }, 9);
+  tlAnatomyExit.to(handle.position, { z: -0.0336117260158062, ease: "none", duration: 2 }, 9);
+  tlAnatomyExit.to(body.position, { x: positionExit.x, y: positionExit.y, z: positionExit.z, ease: "none", duration: 2 }, 9);
+  tlAnatomyExit.to(valveHead.position, { x: positionExit2.x, y: positionExit2.y, z: positionExit2.z, ease: "none", duration: 2 }, 9);
+  tlAnatomyExit.to(washer1.position, { x: 0.0502999946475029, ease: "none", duration: 2 }, 9);
+  tlAnatomyExit.to(washer2.position, { x: 0.0600000000000005, ease: "none", duration: 2 }, 9);
+
+  addSection(master, tlAnatomy, ".anatomy", "top 80%", "bottom bottom");
+  addSection(master, tlAnatomyExit, ".anatomy-exit", "top 80%", "bottom bottom");
+
+  // ---------------- PAGE 4 ----------------
+  const tlPage4 = gsap.timeline();
+  tlPage4.to(model.position, { y: -5, duration: 2 }, 0);
+  tlPage4.to(model.rotation, { x: 0, y: 0, duration: 2 }, 0);
+
+  addSection(master, tlPage4, ".page-4", "top 40%", "bottom center");
+
+  masterTL = master;
+  return master;
+}
+
+// -------------------------------------------------------------
+//  Show / hide callbacks (can't live inside a nested timeline,
+//  so they stay as a tiny animation-free ScrollTrigger)
+// -------------------------------------------------------------
+function createSectionCallbacks() {
+  ScrollTrigger.create({
+    trigger: ".anatomy-exit",
+    start: "top 80%",
+    end: "bottom bottom",
+    onEnter: () => showSection("anatomy-exit"),
+    onLeave: () => hideSections(["anatomy-exit"]),
+    onEnterBack: () => showSection("anatomy-exit"),
+    onLeaveBack: () => hideSections(["anatomy-exit"]),
+  });
+}
+
+// -------------------------------------------------------------
+//  Entry point (replaces createAllAnimations)
+// -------------------------------------------------------------
+function createAllAnimations() {
+  createIntroAnimation();
+  createMasterTimeline();
+  createSectionCallbacks();
+
+  // rebuild when layout changes so scroll ranges stay correct
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      createMasterTimeline();
+      ScrollTrigger.refresh();
+    }, 250);
+  });
+}
 // particels 
 
 
@@ -1486,31 +1262,7 @@ if (window.innerWidth > 833) {
 
 // < --- card-animation --->
 
-// document.querySelectorAll('.card').forEach(function (card) {
-//   // card.addEventListener('click', () => card.classList.toggle('flipped'))
-//   card.addEventListener('click', function () {
-//     console.log(this);
-//     this.classList.toggle('flipped');
-//   })
-// });
 
-// const productContainer = document.getElementById('product-wrapper');
-
-// const products = [
-//   {
-//     id: 1,
-//     name: "Lando Valve",
-//     size: "1INCH",
-//     img: "src/images/gasvalve1.png"
-//   },
-//   {
-//     id: 2,
-//     name: "Lando Valve",
-//     size: "1INCH",
-//     img: "src/images/gasvalve1.png"
-//   },
-
-// ];
 
 let progress;
 let li1 = document.querySelector('.li-1');
@@ -1667,16 +1419,7 @@ gsap.fromTo(
   }
 );
 
-// gsap.to(".company-purpose-li-svg", {
-//   rotate: 4770.88,
-//   duration: 2,
-//   ease: "none",
-//   scrollTrigger: {
-//     trigger: ".company-purpose-container",
-//     start: "top 80%", // or "top center"
-//     once: true // ← critical: only plays once
-//   }
-// });
+
 
 
 
@@ -1708,31 +1451,7 @@ function createAnatomyLabels() {
 
 const anatomyLabelsBySection = new Map();
 
-// function createAnatomyLabel(object, title, section) {
 
-//     const div = document.createElement("div");
-//     div.className = "anatomy-label";
-
-//     div.innerHTML = `
-//         <div class="pointer-line"></div>
-//         <div class="label-content">
-//             <img src="/images/pointer.png">
-//             <span>${title}</span>
-//         </div>
-//     `;
-
-//     const label = new CSS2DObject(div);
-//     object.add(label);
-
-//     // ---- group by section ----
-//     if (!anatomyLabelsBySection.has(section)) {
-//         anatomyLabelsBySection.set(section, []);
-//     }
-
-//     anatomyLabelsBySection.get(section).push(label);
-
-//     return label;
-// }
 
 function createAnatomyLabel(object, title, section) {
   const div = document.createElement("div");
@@ -1756,20 +1475,6 @@ function createAnatomyLabel(object, title, section) {
   return label;
 }
 
-// hideSections([
-//     "test",
-//     "test-2",
-//     "test-3",
-//     "test-4",
-//     "page-1",
-//     "page-2",
-//     "page-3",
-//     "anatomy",
-//     "page-4"
-
-// ]);
-
-// showSection("anatomy-exit");
 
 
 function showSection(section) {
@@ -1828,20 +1533,6 @@ console.log("pointer: "+ pointer)
 
 
 
-
-// function hideLoader() {
-//   const loaderScreen = document.querySelector('#loader');
-//   if (!loaderScreen) return;
-
-//   gsap.to(loaderScreen, {
-//     opacity: 0,
-//     duration: 0.6,
-//     ease: 'power2.out',
-//     onComplete: () => {
-//       loaderScreen.remove(); // or style.display = 'none'
-//     }
-//   });
-// }
 
 function hideLoader() {
   const loaderScreen = document.querySelector('#loader');
@@ -1936,13 +1627,7 @@ function getModelPosition() {
 function getBodyEnterPosition() {
   const width = window.innerWidth;
 
-  // if (width < 768) {
-  //   return {
-  //     x: -32.6,
-  //     y: 3.8,
-  //     z: -0.2
-  //   };
-  // }
+ 
 
   if (width < 1024) {
     return {
@@ -2075,6 +1760,7 @@ function Page2ObjectPosition() {
     y:0.38,
   };
 }
+
 
 
 
@@ -2537,46 +2223,7 @@ const products = [
 
 
 
-// document.querySelectorAll(".switcher").forEach(switcher => {
 
-//   const circle = switcher.querySelector(".circle");
-//   const buttons = switcher.querySelectorAll(".item");
-
-
-//   function moveCircle(button) {
-
-//     circle.style.width = button.offsetWidth + "px";
-
-//     circle.style.transform =
-//       `translateX(${button.offsetLeft - 6}px)`;
-
-//   }
-
-
-//   buttons.forEach(button => {
-
-//     button.addEventListener("click", () => {
-
-//       buttons.forEach(btn =>
-//         btn.classList.remove("active")
-//       );
-
-//       button.classList.add("active");
-
-//       moveCircle(button);
-
-//     });
-
-//   });
-
-
-//   // initial position for each container
-
-//   moveCircle(
-//     switcher.querySelector(".active")
-//   );
-
-// });
 
 document.querySelectorAll(".switcher").forEach(switcher => {
 
@@ -2591,15 +2238,7 @@ document.querySelectorAll(".switcher").forEach(switcher => {
   let current = 0;
 
 
-//   function moveCircle(item){
 
-//     circle.style.width =
-//       item.offsetWidth + "px";
-
-//     circle.style.transform =
-//       `translateX(${item.offsetLeft - 6}px)`;
-
-//   }
 
 function moveCircle(item){
 
@@ -2613,20 +2252,6 @@ function moveCircle(item){
 }
 
 
-//   function activate(index){
-
-//     current = index;
-
-//     items.forEach(item =>
-//       item.classList.remove("active")
-//     );
-
-//     items[current].classList.add("active");
-
-//     moveCircle(items[current]);
-    
-
-//   }
 
 function activate(index){
 
@@ -2644,81 +2269,12 @@ function activate(index){
   moveCircle(activeItem);
 
 
-  // center selected item
-//   activeItem.scrollIntoView({
-//     behavior: "smooth",
-//     block: "nearest",
-//     inline: "center"
-//   });
+
 
 }
 
 const itemsBox = switcher.querySelector(".items");
-// function activate(index){
 
-//   current = index;
-
-//   items.forEach(item =>
-//     item.classList.remove("active")
-//   );
-
-
-//   const activeItem = items[current];
-
-//   activeItem.classList.add("active");
-
-
-//   moveCircle(activeItem);
-
-
-//   // center only inside the tabs container
-//   const containerCenter = itemsBox.offsetWidth / 2;
-
-//   const itemCenter =
-//     activeItem.offsetLeft + activeItem.offsetWidth / 2;
-
-
-//   itemsBox.scrollTo({
-
-//     left: itemCenter - containerCenter,
-
-//     behavior:"smooth"
-
-//   });
-
-// }
-// function activate(index){
-
-//   current = index;
-
-//   items.forEach(item =>
-//     item.classList.remove("active")
-//   );
-
-
-//   const activeItem = items[current];
-
-//   activeItem.classList.add("active");
-
-
-//   moveCircle(activeItem);
-
-
-//   const container = activeItem.parentElement;
-
-
-//   const scrollPosition =
-//     activeItem.offsetLeft -
-//     (container.clientWidth / 2) +
-//     (activeItem.offsetWidth / 2);
-
-
-//   container.scrollTo({
-//     left: scrollPosition,
-//     behavior: "smooth"
-//   });
-
-// }
 
   items.forEach((item,index)=>{
 
@@ -2761,36 +2317,7 @@ right.addEventListener("click",()=>{
 
 });
 
-// const arrows = document.querySelectorAll(".arrow");
 
-
-// arrows.forEach(arrow => {
-
-//   arrow.addEventListener("click",()=>{
-
-//     const tabs =
-//     arrow.parentElement.querySelector(".tabs");
-
-
-//     if(arrow.classList.contains("right")){
-
-//       tabs.scrollBy({
-//         left:120,
-//         behavior:"smooth"
-//       });
-
-//     } else {
-
-//       tabs.scrollBy({
-//         left:-120,
-//         behavior:"smooth"
-//       });
-
-//     }
-
-//   });
-
-// });
 
 
 
@@ -2849,21 +2376,7 @@ function renderProducts(){
 
     });
 
-     // add click to cards
-//     document.querySelectorAll(".product-card")
-//     .forEach(card=>{
 
-//         card.addEventListener("click",()=>{
-
-//             const id = card.dataset.id;
-
-//             window.location.href = `/product?id=${id}`;
-
-//         });
-
-//     });
-
-// }
 
     document.querySelectorAll(".product-card")
     .forEach(card=>{
@@ -2906,27 +2419,7 @@ document.querySelectorAll("[data-size]")
 
 
 
-// document.querySelectorAll("[data-type]")
-// .forEach(button => {
 
-//     button.addEventListener("click",()=>{
-
-//         document
-//         .querySelectorAll("[data-type]")
-//         .forEach(btn=>btn.classList.remove("active"));
-
-
-//         button.classList.add("active");
-
-
-//         selectedType = button.dataset.type;
-
-
-//         renderProducts();
-
-//     });
-
-// });
 
 document.querySelectorAll("[data-type]")
 .forEach(button => {
@@ -3045,26 +2538,6 @@ gsap.to(".fa-logo",{
 
 
 
-// document.querySelectorAll('.menu__item').forEach(link => {
-//   link.addEventListener('click', () => {
-//     document.getElementById('menu__toggle').checked = false;
-//   });
-// });
-
-// const hamburgerMenu = document.querySelector(".hamburger-menu");
-// const menuToggle = document.getElementById("menu__toggle");
-
-// menuToggle.addEventListener("change", function () {
-//   if (this.checked) {
-//     hamburgerMenu.style.width = "100%";
-//     hamburgerMenu.style.height = "100vh";
-//     hamburgerMenu.style.margin = "0";
-//   } else {
-//     hamburgerMenu.style.width = "97%";
-//     hamburgerMenu.style.height = "7vh";
-//     hamburgerMenu.style.margin = "3% 0 0 1%";
-//   }
-// });
 
 const hamburgerMenu = document.querySelector(".hamburger-menu");
 const menuToggle = document.getElementById("menu__toggle");
