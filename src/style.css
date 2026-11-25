@@ -1035,6 +1035,7 @@ font-size: 22px;
   gap: 39px;
   text-align: end;
   color: white;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 1667px) {
@@ -2867,11 +2868,12 @@ width: 93%;
   font-weight: 400;
   font-style: normal;
   font-size: 6rem;
+  top: 11%;
    font-family: "pelak";
 }
 }
 
-@media screen and (max-width: 435px) {
+@media screen and (max-width: 484px) {
  .brand-name {
    /* font-family: "B-Sina", sans-serif; */
   font-weight: 400;
@@ -2881,35 +2883,17 @@ width: 93%;
 }
 }
 
-/* @media screen and (max-width: 337px) {
+@media screen and (max-width: 400px) {
  .brand-name {
-  font-family: "B-Sina", sans-serif;
+   /* font-family: "B-Sina", sans-serif; */
   font-weight: 400;
   font-style: normal;
-  font-size: 5rem;
-   margin-top: -17rem;
+  font-size: 3.8rem;
+   font-family: "pelak";
 }
-} */
+}
 
-/* @media screen and (max-width: 583px) {
- .brand-name {
-   font-family: "Bowlby One SC", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 8rem;
-   margin-top: -27rem;
-}
-} */
 
-/* @media screen and (max-width: 443px) {
-.brand-name {
-   font-family: "Bowlby One SC", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 7rem;
-   margin-top: -27rem;
-}
-} */
 
 .privet-company-text {
   /* font-family: "VazirBold", sans-serif; */
@@ -3788,7 +3772,29 @@ position: absolute;
 @media (max-width: 820px) {
   .hero-slogan-container {
     top: 24%;
+    left: 0;
+    right: 20%;
+  }
+}
 
+@media (max-width: 600px) {
+  .hero-slogan-container {
+    top: 25%;
+    right: 10%;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero-slogan-container {
+    top: 26%;
+    right: 9%;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-slogan-container {
+    top: 22%;
+    right: 11%;
   }
 }
 
@@ -3798,11 +3804,50 @@ font-size: 3rem;
 
 }
 
+@media (max-width: 820px) {
+  .hero-slogan-first-text {
+
+font-size: 2rem;
+
+}
+}
+
+@media (max-width: 500px) {
+  .hero-slogan-first-text {
+
+font-size: 1.7rem;
+
+}
+}
+
 .hero-slogan-second-text {
 
 font-size: 4.4rem;
   color: #E30D0DD1;
 
+}
+@media (max-width: 820px) {
+  .hero-slogan-second-text {
+
+font-size: 3.4rem;
+
+}
+}
+
+@media (max-width: 500px) {
+  .hero-slogan-second-text {
+
+font-size: 3.2rem;
+
+}
+}
+
+@media (max-width: 400px) {
+  .hero-slogan-second-text {
+
+font-size: 2.9rem;
+
+}
 }
 
 .hero-slogan-third-text {
@@ -3817,4 +3862,22 @@ font-size: 4.4rem;
   .hero-slogan-third-text {
     margin-right: 0;
   }
+}
+
+@media (max-width: 820px) {
+  .hero-slogan-third-text {
+
+  font-size: 1.6rem;
+
+
+}
+}
+
+@media (max-width: 500px) {
+  .hero-slogan-third-text {
+
+  font-size: 1.2rem;
+
+
+}
 }

@@ -89,7 +89,9 @@
   <header class="site-header">
     <nav class="navbar" aria-label="ناوبری اصلی">
       <div class="nav-right">
+
         <a class="nav-link active" href="#home">صفحه اصلی</a>
+
         <a class="nav-link" href="#products">محصولات</a>
         <a class="nav-link" href="#catalog">کاتالوگ</a>
         <a class="nav-link" href="#contact">تماس با ما</a>
@@ -113,17 +115,18 @@
 </div> -->
 
  <!-- ---- second header design ---- -->
-<header class="hero-header">
+<!-- <header class="hero-header">
   <a href="/" class="header-logo" aria-label="Home">
    <img class="header-logo" src="./public/images/amin-shir-white-logo.png" alt="">
   </a>
 
   <nav class="header-nav">
     <nav class="header-nav-item">
-    <a href="#work">صفحه اصلی</a>
-    <a href="#info">محصولات</a>
-    <a href="#contact">کاتالوگ</a>
-     <a href="#contact">تماس با ما</a>
+    <a href="/index.html" data-home-link>صفحه اصلی</a>
+    <a  href="/aboutus">درباره ما</a>
+    <a href="/shop.html">محصولات</a>
+    <a href="https://online.fliphtml5.com/aminshir/Aminshir-1">کاتالوگ</a>
+     <a href="/contactus.html">تماس با ما</a>
    </nav>
      
         <button class="language" aria-label="انتخاب زبان">
@@ -133,7 +136,119 @@
         </button>
         
   </nav>
+</header> -->
+
+ <!-- ---- second header design ---- -->
+
+ 
+<header class="hero-header">
+
+  <a href="/" class="header-logo" aria-label="Home">
+    <img src="./public/images/amin-shir-white-logo.png" alt="Amin Shir">
+  </a>
+
+  <nav class="header-nav">
+
+    <div class="header-nav-item">
+      <a href="/index.html" data-home-link>صفحه اصلی</a>
+      <a href="/aboutus">درباره ما</a>
+      <a href="/shop.html">محصولات</a>
+      <a href="https://online.fliphtml5.com/aminshir/Aminshir-1">کاتالوگ</a>
+      <a href="/contactus.html">تماس با ما</a>
+    </div>
+
+    <!-- Desktop Language -->
+    <div class="language-wrapper">
+
+      <button class="language" id="languageBtn" aria-expanded="false">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3.5 12h17M12 3c2.4 2.5 3.5 5.5 3.5 9s-1.1 6.5-3.5 9c-2.4-2.5-3.5-6.5-3.5-9S9.6 5.5 12 3Z"/>
+        </svg>
+        <span id="currentLanguage">FA</span>
+        <svg class="chevron" viewBox="0 0 12 12">
+          <path d="m2 4 4 4 4-4"/>
+        </svg>
+      </button>
+
+      <div class="language-dropdown" id="languageDropdown">
+
+        <button class="language-option active" data-lang="fa">
+          <span>فارسی</span>
+          <span>FA</span>
+        </button>
+
+        <button class="language-option" data-lang="en">
+          <span>English</span>
+          <span>EN</span>
+        </button>
+
+        <button class="language-option" data-lang="ar">
+          <span>العربية</span>
+          <span>AR</span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button class="mobile-menu-btn" id="openMenu" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+
 </header>
+
+
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Mobile Sidebar -->
+<aside class="mobile-sidebar" id="mobileSidebar">
+
+  <div class="sidebar-header">
+    <img src="./public/images/amin-shir-white-logo.png" alt="Amin Shir">
+
+    <button class="close-sidebar" id="closeMenu" aria-label="Close menu">
+      &times;
+    </button>
+  </div>
+
+  <nav class="sidebar-links">
+    <a href="/index.html" data-i18n="home">صفحه اصلی</a>
+    <a href="/aboutus" data-i18n="about">درباره ما</a>
+    <a href="/shop.html" data-i18n="products">محصولات</a>
+    <a href="https://online.fliphtml5.com/aminshir/Aminshir-1" data-i18n="catalog">کاتالوگ</a>
+    <a href="/contactus.html" data-i18n="contact">تماس با ما</a>
+  </nav>
+
+  <div class="sidebar-divider"></div>
+
+  <div class="sidebar-language">
+    <h4 data-i18n="language">انتخاب زبان</h4>
+
+    <button class="language-option active" data-lang="fa">
+      <span>فارسی</span>
+      <span>FA</span>
+    </button>
+
+    <button class="language-option" data-lang="en">
+      <span>English</span>
+      <span>EN</span>
+    </button>
+
+    <button class="language-option" data-lang="ar">
+      <span>العربية</span>
+      <span>AR</span>
+    </button>
+  </div>
+
+</aside>
+
 
 
   <div class="main-frame">
@@ -550,6 +665,7 @@
 <!-- <script src="https://unpkg.com/split-type"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/lil-gui@0.18"></script>
 <script src="/src/header.js"></script>
+<script src="/src/header-glass.js"></script>
 <!-- <script src="/src/filter.js"></script> -->
 
 <script type="importmap">
