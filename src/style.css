@@ -1417,7 +1417,7 @@ font-size: 22px;
 .hero-bg {
   background-image: url("/src/images/dust-pic.webp");
   width: 100%;
-  height: 108vh;
+  height: 100%;
   position: absolute;
   z-index: 0;
 }
@@ -1873,11 +1873,11 @@ margin-right: 2.6rem;
   margin-right: 20%;
 }
 
-.footer-logo {
+/* .footer-logo {
  height: 15.2rem;
   width: 15.2rem;
   margin-top: 6%;
-}
+} */
 
 @media screen and (max-width: 1064px) {
 .footer-logo {

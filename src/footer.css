@@ -1,0 +1,437 @@
+
+.amin-footer {
+    --gold: #bca568;
+    --red: #f1262e;
+    --white: #fffdf5;
+
+    position: relative;
+    width: 100%;
+    min-height: 768px;
+    overflow: hidden;
+    color: var(--white);
+    background-color: #eed397b2;
+    isolation: isolate;
+
+}
+
+/* Background texture */
+.amin-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    opacity: .24;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    mix-blend-mode: multiply;
+}
+
+.amin-footer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(115deg,
+            rgba(255,255,255,.07),
+            transparent 40%,
+            rgba(94,67,23,.06));
+    pointer-events: none;
+}
+
+/* Decorative technical circles */
+.footer-circles {
+    position: absolute;
+    width: 770px;
+    height: 770px;
+    left: -35px;
+    top: -85px;
+    opacity: .7;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.footer-circles circle {
+    fill: none;
+    stroke: rgba(255,253,245,.75);
+    stroke-width: 1;
+}
+
+/* Main footer layout */
+.footer-main {
+    min-height: 660px;
+    display: grid;
+    grid-template-columns: 1.15fr 1.15fr 1.15fr 1.8fr;
+    direction: rtl;
+    padding: 145px 4.3% 60px;
+    position: relative;
+    background-image: url("/images/Faint Industrial Valve Ring Overlay.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Columns */
+.footer-column {
+    padding: 0 40px;
+    border-left: 1px solid rgba(255,255,255,.65);
+    position: relative;
+}
+
+.footer-column:last-of-type {
+    border-left: none;
+}
+
+.footer-heading {
+    font-size: clamp(20px, 1.65vw, 29px);
+    font-weight: 800;
+    margin-bottom: 48px;
+    display: inline-block;
+    position: relative;
+}
+
+.footer-heading::before {
+    content: "";
+    position: absolute;
+    width: 52px;
+    height: 4px;
+    background: var(--red);
+    top: -11px;
+    right: 0;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: clamp(15px, 1.25vw, 21px);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: color .3s ease, transform .3s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    transform: translateX(-5px);
+}
+
+.footer-links a svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+}
+
+/* Brand section */
+.footer-brand {
+    padding-right: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo {
+    font-size: clamp(55px, 5.3vw, 92px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -4px;
+    margin-bottom: 28px;
+}
+
+.footer-established {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 430px;
+    font-size: 23px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.footer-established::before,
+.footer-established::after {
+    content: "";
+    height: 1px;
+    background: var(--white);
+    flex: 1;
+}
+
+.footer-slogan {
+    margin-top: 30px;
+    font-size: clamp(26px, 2.4vw, 43px);
+    font-weight: 800;
+    line-height: 1.6;
+}
+
+.footer-slogan span {
+    display: block;
+    color: var(--red);
+}
+
+.footer-description {
+    font-size: clamp(13px, 1.05vw, 18px);
+    line-height: 2;
+    margin-top: 13px;
+    white-space: nowrap;
+}
+
+/* Social media */
+.footer-socials {
+    display: flex;
+    gap: 35px;
+    margin-top: 45px;
+    direction: ltr;
+}
+
+.social-link {
+    width: 59px;
+    height: 59px;
+    border: 1.5px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: .3s ease;
+}
+
+.social-link:hover {
+    background: white;
+    color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.social-link svg {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+}
+
+/* Bottom section */
+.footer-bottom {
+    height: 108px;
+    border-top: 2px solid rgba(255,255,255,.85);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4.3%;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-copyright {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.footer-signature {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.footer-signature i {
+    width: 16px;
+    height: 28px;
+    background: var(--red);
+    transform: skew(-25deg);
+    display: inline-block;
+}
+
+/* Gas valve line illustration */
+.footer-valve {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 330px;
+    height: 660px;
+    pointer-events: none;
+    opacity: .9;
+    z-index: 0;
+}
+
+.footer-main > * {
+    z-index: 1;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+    .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 90px 7% 60px;
+        row-gap: 65px;
+    }
+
+    .footer-column {
+        min-height: 260px;
+        padding: 0 30px;
+    }
+
+    .footer-column:nth-child(2) {
+        border-left: none;
+    }
+
+    .footer-brand {
+        grid-column: span 2;
+        grid-row: 1;
+        padding: 0 30px 45px;
+        border-bottom: 1px solid rgba(255,255,255,.5);
+    }
+
+    .footer-logo {
+        font-size: 75px;
+    }
+
+    .footer-description {
+        white-space: normal;
+    }
+
+    .footer-valve {
+        opacity: .3;
+        width: 250px;
+    }
+
+    .footer-circles {
+        left: -300px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .amin-footer {
+        min-height: auto;
+        background-image: none;
+    }
+
+    .footer-main {
+        display: flex;
+        flex-direction: column;
+        padding: 65px 25px 45px;
+        gap: 0;
+        background-image: none;
+    }
+
+    .footer-brand {
+        padding: 0 0 40px;
+        margin-bottom: 35px;
+        border-bottom: 1px solid rgba(255,255,255,.5);
+    }
+
+    .footer-logo {
+        font-size: 59px;
+        letter-spacing: -2px;
+    }
+
+    .footer-established {
+        font-size: 17px;
+    }
+
+    .footer-slogan {
+        font-size: 30px;
+        margin-top: 25px;
+    }
+
+    .footer-description {
+        font-size: 14px;
+        line-height: 2.2;
+    }
+
+    .footer-socials {
+        gap: 17px;
+        margin-top: 30px;
+    }
+
+    .social-link {
+        width: 46px;
+        height: 46px;
+    }
+
+    .social-link svg {
+        width: 21px;
+        height: 21px;
+    }
+
+    .footer-column {
+        border-left: none;
+        border-bottom: 1px solid rgba(255,255,255,.5);
+        padding: 0 0 35px;
+        margin-bottom: 35px;
+        min-height: auto;
+    }
+
+    .footer-heading {
+        font-size: 23px;
+        margin-bottom: 30px;
+    }
+
+    .footer-links {
+        gap: 22px;
+    }
+
+    .footer-links a {
+        font-size: 17px;
+    }
+
+    .footer-bottom {
+        height: auto;
+        min-height: 100px;
+        padding: 22px 25px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .footer-copyright {
+        font-size: 13px;
+    }
+
+    .footer-signature {
+        font-size: 17px;
+        gap: 15px;
+    }
+
+    .footer-signature i {
+        width: 12px;
+        height: 22px;
+    }
+
+    .footer-valve {
+        width: 190px;
+        height: 400px;
+        left: -65px;
+        top: 0;
+        opacity: .22;
+    }
+
+    .footer-circles {
+        width: 500px;
+        height: 500px;
+        top: -30px;
+        left: -250px;
+        opacity: .3;
+    }
+}
+
+@media (max-width: 360px) {
+    .footer-logo {
+        font-size: 48px;
+    }
+
+    .footer-slogan {
+        font-size: 26px;
+    }
+
+    .footer-established {
+        font-size: 14px;
+    }
+}
